@@ -32,7 +32,7 @@ public class TestClient {
 
 		javax.xml.soap.MimeHeaders mh;
 		ClientRegionFactory crf = cache.createClientRegionFactory(ClientRegionShortcut.PROXY);
-		Region<String, TestDomain> region = crf.create("mpos2");
+		Region<String, Object> region = crf.create("mpos2");
 
 		GregorianCalendar c = new GregorianCalendar();
 		c.setTime(new Date());
@@ -45,11 +45,16 @@ public class TestClient {
 		orderReferenceDataDetail.description = "description";
 		orderReferenceDataDetail.longDescription = "longdescription";
 		orderReferenceData.details.add(orderReferenceDataDetail);
+		region.put("123456789",orderReferenceData);
+		System.out.println("Object put: " + orderReferenceData.toString());
+		OrderReferenceData d1 = (OrderReferenceData) region.get("123456789");
+		System.out.println("Object get: " + d1.toString());
+		
 		TestDomain tdp = new TestDomain("123456789", 12, 1000L, new Date(), xmlDate, stackTrace[0], waitable,
 				orderReferenceData);
 		region.put(tdp.getSessionId(), tdp);
 		System.out.println("Object put: " + tdp.toString());
-		TestDomain tdg = region.get(tdp.getSessionId());
+		TestDomain tdg = (TestDomain) region.get(tdp.getSessionId());
 		System.out.println("Object get: " + tdg.toString());
 
 	}

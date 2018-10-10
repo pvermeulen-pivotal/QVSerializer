@@ -10,16 +10,22 @@
 
 
 	<properties>
+		<geode_version>9.5.1</geode_version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.apache.geode</groupId>
+			<groupId>io.pivotal.gemfire</groupId>
 			<artifactId>geode-core</artifactId>
-			<version>1.6.0</version>
+			<version>${geode_version}</version>
 		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.apache.geode</groupId> -->
+<!-- 			<artifactId>geode-core</artifactId> -->
+<!-- 			<version>1.6.0</version> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>xerces</groupId>
 			<artifactId>xercesImpl</artifactId>
@@ -46,5 +52,28 @@
 			<version>1.1.2</version>
 		</dependency>
 	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>maven</id>
+			<url>http://repo.maven.apache.org/maven2/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>gemfire-release-repo</id>
+			<name>Pivotal GemFire Release Repository</name>
+			<url>https://commercial-repo.pivotal.io/data3/gemfire-release-repo/gemfire</url>
+		</repository>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>http://repo.spring.io/libs-milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 
 </project>

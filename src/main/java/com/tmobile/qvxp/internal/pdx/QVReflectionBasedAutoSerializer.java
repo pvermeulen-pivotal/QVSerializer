@@ -15,9 +15,9 @@ import java.util.Map;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.soap.MimeHeader;
 import javax.xml.soap.MimeHeaders;
-import javax.xml.soap.SOAPException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -26,8 +26,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.apache.axis.SOAPPart;
-import org.apache.axis.message.SOAPDocumentImpl;
 import org.apache.geode.cache.Declarable;
 import org.apache.geode.pdx.FieldType;
 import org.apache.geode.pdx.PdxSerializer;
@@ -35,13 +33,11 @@ import org.apache.geode.pdx.ReflectionBasedAutoSerializer;
 import org.apache.xerces.jaxp.datatype.DatatypeFactoryImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
-import com.sun.xml.internal.messaging.saaj.soap.SOAPPartImpl;
 import com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPPart1_1Impl;
-
-import com.tmobile.qvxp.domain.WrapperDOMSource;
-import com.tmobile.qvxp.domain.WrapperDocumentImpl;
 
 public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializer
 		implements PdxSerializer, Declarable {
@@ -132,28 +128,23 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
 			return headers;
 		} else if (f.getType().equals(com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPPart1_1Impl.class)) {
 			com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPPart1_1Impl impl = (SOAPPart1_1Impl) originalValue;
-			return impl;
-		} else if (f.getType().equals(com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl.class)) {
 			byte[] objectBytes = null;
 			if (originalValue != null) {
 				objectBytes = objectToByteArray(originalValue);
 			}
-//			SOAPDocumentImpl result = null;
-//			com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl sdi = (com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl) originalValue;
-//			SOAPPartImpl impl = sdi.getSOAPPart();
-//			javax.xml.soap.SOAPPart sp = impl.getSOAPPart();
-//			try {
-//				SOAPPart sp1 = new SOAPPart(null, sp.getContent(), false);
-//				result = new SOAPDocumentImpl((SOAPPart) sp1);
-//
-//				if (log.isDebugEnabled()) {
-//					log.debug("QVReflectionBasedSerializer write transformation for			 SOAPDocumentImpl "
-//							+ result);
-//				}
-//			} catch (SOAPException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
+			return objectBytes;
+		} else if (f.getType().equals(com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl.class)) {
+			byte[] objectBytes = null;
+			if (originalValue != null) {
+				com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl sdi = (com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl) originalValue;
+				NodeList nodeList = sdi.getChildNodes();
+				if (nodeList != null && nodeList.getLength() > 0) {
+					NamedNodeMap namedNodeMap = sdi.getAttributes();
+					if (namedNodeMap != null && namedNodeMap.getLength() > 0) {
+						objectBytes = objectToByteArray(originalValue);
+					}
+				}
+			}
 			return objectBytes;
 		} else if (f.getType().equals(Source.class) || f.getType().equals(DOMSource.class)) {
 			Map<String, String> domSourceMap = null;
@@ -192,7 +183,17 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
 		return sw.toString();
 	}
 
+	private Node stringToNode(String strNode) throws Exception {
+		if (strNode == null)
+			return null;
+
+		return DocumentBuilderFactory.newInstance().newDocumentBuilder()
+				.parse(new ByteArrayInputStream(strNode.getBytes())).getDocumentElement();
+	}
+
 	private Object byteArrayToObject(byte[] byteArray) {
+		if (byteArray == null)
+			return null;
 		ByteArrayInputStream bis = new ByteArrayInputStream(byteArray);
 		ObjectInput in = null;
 		Object obj = null;
@@ -291,39 +292,27 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
 		} else if (f.getType().equals(com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl.class)) {
 			com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl soapDocumentImpl = null;
 			if (serializedValue != null) {
-				WrapperDocumentImpl wrapperDocumentImpl = (WrapperDocumentImpl) serializedValue;
-				soapDocumentImpl = wrapperDocumentImpl.getDocumentImpl();
+				soapDocumentImpl = (com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl) byteArrayToObject(
+						(byte[]) serializedValue);
 			}
 			return soapDocumentImpl;
-			// SOAPDocumentImpl sdi = (SOAPDocumentImpl) serializedValue;
-			// String strNode = sdi.getTextContent();
-			// Message message = new Message(strNode);
-			// javax.xml.soap.SOAPPart sp = message.getSOAPPart();
-			// com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl result = null;
-			// if (serializedValue != null) {
-			// result = new
-			// com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl((SOAPPartImpl) sp);
-			// }
-			// return result;
-		} else if (f.getType().equals(WrapperDOMSource.class)) {
+		} else if (f.getType().equals(DOMSource.class) || f.getType().equals(Source.class)) {
 			DOMSource domSource = null;
 			if (serializedValue != null) {
-				WrapperDOMSource wrapperDOMSource = (WrapperDOMSource) serializedValue;
-				domSource = wrapperDOMSource.getDomSource();
-			}
-			return domSource;
-		} else if (f.getType().equals(WrapperDocumentImpl.class)) {
-			com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl soapDocumentImpl = null;
-			if (serializedValue != null) {
-				WrapperDocumentImpl wrapperDocumentImpl = (WrapperDocumentImpl) serializedValue;
-				soapDocumentImpl = wrapperDocumentImpl.getDocumentImpl();
-			}
-			return soapDocumentImpl;
-		} else if (f.getType().equals(javax.xml.transform.Source.class)) {
-			DOMSource domSource = null;
-			if (serializedValue != null) {
-				WrapperDOMSource wrapper = (WrapperDOMSource) serializedValue;
-				domSource = wrapper.getDomSource();
+				domSource = new DOMSource();
+				Map<String, String> map = (Map<String, String>) serializedValue;
+				try {
+					Node node = stringToNode(map.get("node"));
+					String id = map.get("id");
+					if (node != null) {
+						domSource.setNode(node);
+					}
+					if (id != null && id.length() > 0) {
+						domSource.setSystemId(id);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 			return domSource;
 		} else {
@@ -331,4 +320,4 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
 		}
 	}
 
-}
+};
