@@ -3,8 +3,11 @@ package com.tmobile.qvxp.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.sun.xml.messaging.saaj.soap.ver1_1.SOAPPart1_1Impl;
 
 public class Waitable implements Serializable {
     private static final Logger log = LoggerFactory.getLogger(Waitable.class);
@@ -26,8 +29,9 @@ public class Waitable implements Serializable {
     long timeToRetry = 0; // millisecs
     long pollInterval = 0; // millisecs
     Throwable taskException;
-    Object dataItem = new com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPPart1_1Impl();
+    Object dataItem = new SOAPPart1_1Impl();
     boolean syncEnabled = false;
+
     /**
      * Initialize waitable with all default values
      */

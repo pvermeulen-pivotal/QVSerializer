@@ -37,7 +37,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPPart1_1Impl;
+import com.sun.xml.messaging.saaj.soap.SOAPDocumentImpl;
 
 public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializer
 		implements PdxSerializer, Declarable {
@@ -45,27 +45,24 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
 
 	public QVReflectionBasedAutoSerializer() {
 		super(false, ".*,");
-
 	}
 
 	@Override
 	public FieldType getFieldType(Field f, Class<?> clazz) {
-		Throwable a;
 		if (f.getType().equals(XMLGregorianCalendar.class)) {
 			return FieldType.BYTE_ARRAY;
 		} else if (f.getType().equals(StackTraceElement.class)) {
 			return FieldType.BYTE_ARRAY;
 		} else if (f.getType().equals(MimeHeaders.class)) {
 			return FieldType.OBJECT;
-		} else if (f.getType().equals(SOAPPart1_1Impl.class)) {
-			return FieldType.OBJECT;
-		} else if (f.getType().equals(com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl.class)) {
+		} else if (f.getType().equals(SOAPDocumentImpl.class)) {
 			return FieldType.BYTE_ARRAY;
-		} else if (f.getType().equals(javax.xml.transform.Source.class)
-				|| f.getType().equals(javax.xml.transform.dom.DOMSource.class)) {
+		} else if (f.getType().equals(Source.class) || f.getType().equals(DOMSource.class)) {
 			return FieldType.OBJECT;
-		} else if (f.getType().equals(com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPPart1_1Impl.class)) {
-			return FieldType.BYTE_ARRAY;
+			// } else if
+			// (f.getType().equals(com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPPart1_1Impl.class))
+			// {
+			// return FieldType.BYTE_ARRAY;
 		} else {
 			return super.getFieldType(f, clazz);
 		}
@@ -79,9 +76,7 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
 			return true;
 		} else if (f.getType().equals(MimeHeaders.class)) {
 			return true;
-		} else if (f.getType().equals(com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl.class)) {
-			return true;
-		} else if (f.getType().equals(com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPPart1_1Impl.class)) {
+		} else if (f.getType().equals(SOAPDocumentImpl.class)) {
 			return true;
 		} else if (f.getType().equals(Source.class) || f.getType().equals(DOMSource.class)) {
 			return true;
@@ -90,7 +85,6 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
 		}
 	}
 
-	@SuppressWarnings("restriction")
 	@Override
 	public Object writeTransform(Field f, Class<?> clazz, Object originalValue) {
 		if (f.getType().equals(StackTraceElement.class)) {
@@ -126,17 +120,10 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
 				}
 			}
 			return headers;
-		} else if (f.getType().equals(com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPPart1_1Impl.class)) {
-			com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPPart1_1Impl impl = (SOAPPart1_1Impl) originalValue;
+		} else if (f.getType().equals(SOAPDocumentImpl.class)) {
 			byte[] objectBytes = null;
 			if (originalValue != null) {
-				objectBytes = objectToByteArray(originalValue);
-			}
-			return objectBytes;
-		} else if (f.getType().equals(com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl.class)) {
-			byte[] objectBytes = null;
-			if (originalValue != null) {
-				com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl sdi = (com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl) originalValue;
+				SOAPDocumentImpl sdi = (SOAPDocumentImpl) originalValue;
 				NodeList nodeList = sdi.getChildNodes();
 				if (nodeList != null && nodeList.getLength() > 0) {
 					NamedNodeMap namedNodeMap = sdi.getAttributes();
@@ -289,11 +276,10 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
 			} else {
 				return null;
 			}
-		} else if (f.getType().equals(com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl.class)) {
-			com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl soapDocumentImpl = null;
+		} else if (f.getType().equals(SOAPDocumentImpl.class)) {
+			SOAPDocumentImpl soapDocumentImpl = null;
 			if (serializedValue != null) {
-				soapDocumentImpl = (com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl) byteArrayToObject(
-						(byte[]) serializedValue);
+				soapDocumentImpl = (SOAPDocumentImpl) byteArrayToObject((byte[]) serializedValue);
 			}
 			return soapDocumentImpl;
 		} else if (f.getType().equals(DOMSource.class) || f.getType().equals(Source.class)) {
