@@ -1,27 +1,24 @@
 package com.tmobile.qvxp.internal.pdx;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
-import java.io.ObjectOutputStream;
 import java.io.StringWriter;
 import java.lang.reflect.Field;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.XMLGregorianCalendar;
-import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.soap.MessageFactory;
 import javax.xml.soap.MimeHeader;
 import javax.xml.soap.MimeHeaders;
+import javax.xml.soap.SOAPBody;
+import javax.xml.soap.SOAPException;
+import javax.xml.soap.SOAPMessage;
 import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
@@ -33,11 +30,7 @@ import org.apache.geode.pdx.ReflectionBasedAutoSerializer;
 import org.apache.xerces.jaxp.datatype.DatatypeFactoryImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
-import com.sun.xml.messaging.saaj.soap.SOAPDocumentImpl;
+import org.w3c.dom.Document;
 
 public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializer
 		implements PdxSerializer, Declarable {
@@ -50,19 +43,15 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
 	@Override
 	public FieldType getFieldType(Field f, Class<?> clazz) {
 		if (f.getType().equals(XMLGregorianCalendar.class)) {
-			return FieldType.BYTE_ARRAY;
+			return FieldType.STRING;
 		} else if (f.getType().equals(StackTraceElement.class)) {
-			return FieldType.BYTE_ARRAY;
+			return FieldType.STRING;
 		} else if (f.getType().equals(MimeHeaders.class)) {
 			return FieldType.OBJECT;
-		} else if (f.getType().equals(SOAPDocumentImpl.class)) {
-			return FieldType.BYTE_ARRAY;
-		} else if (f.getType().equals(Source.class) || f.getType().equals(DOMSource.class)) {
-			return FieldType.OBJECT;
-			// } else if
-			// (f.getType().equals(com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPPart1_1Impl.class))
-			// {
-			// return FieldType.BYTE_ARRAY;
+		} else if (f.getType().equals(com.sun.xml.internal.messaging.saaj.soap.SOAPPartImpl.class)) {
+			return FieldType.STRING_ARRAY;
+		} else if (f.getType().equals(java.lang.Throwable.class)) {
+			return FieldType.STRING;
 		} else {
 			return super.getFieldType(f, clazz);
 		}
@@ -76,22 +65,23 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
 			return true;
 		} else if (f.getType().equals(MimeHeaders.class)) {
 			return true;
-		} else if (f.getType().equals(SOAPDocumentImpl.class)) {
+		} else if (f.getType().equals(com.sun.xml.internal.messaging.saaj.soap.SOAPPartImpl.class)) {
 			return true;
-		} else if (f.getType().equals(Source.class) || f.getType().equals(DOMSource.class)) {
+		} else if (f.getType().equals(java.lang.Throwable.class)) {
 			return true;
 		} else {
 			return super.transformFieldValue(f, clazz);
 		}
 	}
 
+	@SuppressWarnings("restriction")
 	@Override
 	public Object writeTransform(Field f, Class<?> clazz, Object originalValue) {
 		if (f.getType().equals(StackTraceElement.class)) {
 			Object stackTraceElement = null;
 			if (originalValue != null) {
 				StackTraceElement bi = (StackTraceElement) originalValue;
-				stackTraceElement = bi.toString().getBytes();
+				stackTraceElement = bi.toString();
 				if (log.isDebugEnabled()) {
 					log.debug("QVReflectionBasedSerializer write transformation for StackTraceElement "
 							+ stackTraceElement);
@@ -99,10 +89,10 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
 			}
 			return stackTraceElement;
 		} else if (f.getType().equals(XMLGregorianCalendar.class)) {
-			Object calendar = null;
+			String calendar = null;
 			if (originalValue != null) {
 				XMLGregorianCalendar bd = (XMLGregorianCalendar) originalValue;
-				calendar = bd.toString().getBytes();
+				calendar = bd.toString();
 				if (log.isDebugEnabled()) {
 					log.debug("QVReflectionBasedSerializer write transformation for XMLGregorianCalendar " + calendar);
 				}
@@ -119,112 +109,44 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
 					headers.put(hdr.getName(), hdr.getValue());
 				}
 			}
+			if (log.isDebugEnabled()) {
+				log.debug("QVReflectionBasedSerializer write transformation for MimeHeaders " + headers);
+			}
 			return headers;
-		} else if (f.getType().equals(SOAPDocumentImpl.class)) {
-			byte[] objectBytes = null;
+		} else if (f.getType().equals(com.sun.xml.internal.messaging.saaj.soap.SOAPPartImpl.class)) {
+			String[] object = null;
 			if (originalValue != null) {
-				SOAPDocumentImpl sdi = (SOAPDocumentImpl) originalValue;
-				NodeList nodeList = sdi.getChildNodes();
-				if (nodeList != null && nodeList.getLength() > 0) {
-					NamedNodeMap namedNodeMap = sdi.getAttributes();
-					if (namedNodeMap != null && namedNodeMap.getLength() > 0) {
-						objectBytes = objectToByteArray(originalValue);
+				object = new String[2];
+				com.sun.xml.internal.messaging.saaj.soap.SOAPPartImpl sdi = (com.sun.xml.internal.messaging.saaj.soap.SOAPPartImpl) originalValue;
+				try {
+					SOAPBody body = sdi.getEnvelope().getBody();
+					if (body != null) {
+						Document doc = body.extractContentAsDocument();
+						StringWriter sw = new StringWriter();
+						TransformerFactory tf = TransformerFactory.newInstance();
+						Transformer transformer = tf.newTransformer();
+						transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
+						transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+						transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+						transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+						transformer.transform(new DOMSource(doc), new StreamResult(sw));
+						object[1] = sw.toString();
 					}
+				} catch (Exception ex) {
+					ex.printStackTrace();
 				}
 			}
-			return objectBytes;
-		} else if (f.getType().equals(Source.class) || f.getType().equals(DOMSource.class)) {
-			Map<String, String> domSourceMap = null;
+			return object;
+		} else if (f.getType().equals(java.lang.Throwable.class)) {
+			String throwable = null;
 			if (originalValue != null) {
-				domSourceMap = new HashMap<>();
-				if (originalValue instanceof DOMSource) {
-					DOMSource domSource = (DOMSource) originalValue;
-					domSourceMap.put("node", NodeToString(domSource.getNode()));
-					domSourceMap.put("id", domSource.getSystemId());
-				} else {
-					Source source = (Source) originalValue;
-					domSourceMap.put("id", source.getSystemId());
-					domSourceMap.put("node", null);
-				}
+				Throwable t = (Throwable) originalValue;
+				throwable = t.toString();
 			}
-			if (domSourceMap == null || domSourceMap.isEmpty())
-				return null;
-			return domSourceMap;
+			return throwable;
 		} else {
 			return super.writeTransform(f, clazz, originalValue);
 		}
-	}
-
-	private String NodeToString(Node node) {
-		if (node == null)
-			return null;
-		StringWriter sw = new StringWriter();
-		try {
-			Transformer t = TransformerFactory.newInstance().newTransformer();
-			t.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
-			t.setOutputProperty(OutputKeys.INDENT, "yes");
-			t.transform(new DOMSource(node), new StreamResult(sw));
-		} catch (TransformerException te) {
-			te.printStackTrace();
-		}
-		return sw.toString();
-	}
-
-	private Node stringToNode(String strNode) throws Exception {
-		if (strNode == null)
-			return null;
-
-		return DocumentBuilderFactory.newInstance().newDocumentBuilder()
-				.parse(new ByteArrayInputStream(strNode.getBytes())).getDocumentElement();
-	}
-
-	private Object byteArrayToObject(byte[] byteArray) {
-		if (byteArray == null)
-			return null;
-		ByteArrayInputStream bis = new ByteArrayInputStream(byteArray);
-		ObjectInput in = null;
-		Object obj = null;
-		try {
-			in = new ObjectInputStream(bis);
-			obj = in.readObject();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (in != null) {
-					in.close();
-				}
-			} catch (IOException ex) {
-				// ignore close exception
-			}
-		}
-		return obj;
-	}
-
-	private byte[] objectToByteArray(Object obj) {
-		if (obj == null)
-			return null;
-
-		ByteArrayOutputStream bos = new ByteArrayOutputStream();
-		ObjectOutput out = null;
-		byte[] objBytes = null;
-		try {
-			out = new ObjectOutputStream(bos);
-			out.writeObject(obj);
-			out.flush();
-			objBytes = bos.toByteArray();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				bos.close();
-			} catch (IOException ex) {
-				ex.printStackTrace();
-			}
-		}
-		return objBytes;
 	}
 
 	@Override
@@ -232,7 +154,7 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
 		if (f.getType().equals(StackTraceElement.class)) {
 			StackTraceElement stackTraceElement = null;
 			if (serializedValue != null) {
-				String str = new String((byte[]) serializedValue);
+				String str = (String) serializedValue;
 				String declaringClass = str.substring(0, str.indexOf("("));
 				String method = declaringClass.substring(declaringClass.lastIndexOf(".") + 1, declaringClass.length());
 				declaringClass = declaringClass.substring(0, declaringClass.lastIndexOf("."));
@@ -253,7 +175,7 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
 		} else if (f.getType().equals(XMLGregorianCalendar.class)) {
 			XMLGregorianCalendar calendar = null;
 			if (serializedValue != null) {
-				String str = new String((byte[]) serializedValue);
+				String str = (String) serializedValue;
 				try {
 					calendar = DatatypeFactoryImpl.newInstance().newXMLGregorianCalendar(str);
 					if (log.isDebugEnabled()) {
@@ -276,34 +198,36 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
 			} else {
 				return null;
 			}
-		} else if (f.getType().equals(SOAPDocumentImpl.class)) {
-			SOAPDocumentImpl soapDocumentImpl = null;
+		} else if (f.getType().equals(com.sun.xml.internal.messaging.saaj.soap.SOAPPartImpl.class)) {
+			SOAPMessage soapMsg = null;
+			MimeHeaders mHdrs = null;
 			if (serializedValue != null) {
-				soapDocumentImpl = (SOAPDocumentImpl) byteArrayToObject((byte[]) serializedValue);
-			}
-			return soapDocumentImpl;
-		} else if (f.getType().equals(DOMSource.class) || f.getType().equals(Source.class)) {
-			DOMSource domSource = null;
-			if (serializedValue != null) {
-				domSource = new DOMSource();
-				Map<String, String> map = (Map<String, String>) serializedValue;
-				try {
-					Node node = stringToNode(map.get("node"));
-					String id = map.get("id");
-					if (node != null) {
-						domSource.setNode(node);
+				String[] values = (String[]) serializedValue;
+				if (values[1] != null) {
+					try {
+						soapMsg = getSoapMessageFromString(null, values[1]);
+					} catch (Exception ex) {
+						ex.printStackTrace();
 					}
-					if (id != null && id.length() > 0) {
-						domSource.setSystemId(id);
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
 				}
 			}
-			return domSource;
+			return soapMsg;
+		} else if (f.getType().equals(java.lang.Throwable.class)) {
+			Throwable throwable = null;
+			if (serializedValue != null) {
+				String str = (String) serializedValue;
+				throwable = new Throwable(str);
+			}
+			return throwable;
 		} else {
 			return super.readTransform(f, clazz, serializedValue);
 		}
 	}
 
-};
+	private SOAPMessage getSoapMessageFromString(MimeHeaders hdrs, String xml) throws SOAPException, IOException {
+		MessageFactory factory = MessageFactory.newInstance();
+		SOAPMessage message = factory.createMessage(hdrs,
+				new ByteArrayInputStream(xml.getBytes(Charset.forName("UTF-8"))));
+		return message;
+	}
+}
