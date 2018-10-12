@@ -7,8 +7,6 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sun.xml.messaging.saaj.soap.ver1_1.SOAPPart1_1Impl;
-
 public class Waitable implements Serializable {
     private static final Logger log = LoggerFactory.getLogger(Waitable.class);
     private final static long serialVersionUID = 1L;
@@ -29,7 +27,7 @@ public class Waitable implements Serializable {
     long timeToRetry = 0; // millisecs
     long pollInterval = 0; // millisecs
     Throwable taskException = new WaitableException("Test waitable task exception");
-    public Object dataItem = new SOAPPart1_1Impl();
+    public Object dataItem = null;
     boolean syncEnabled = false;
 
     /**
