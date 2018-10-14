@@ -74,7 +74,6 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
 		}
 	}
 
-	@SuppressWarnings("restriction")
 	@Override
 	public Object writeTransform(Field f, Class<?> clazz, Object originalValue) {
 		if (f.getType().equals(StackTraceElement.class)) {
@@ -131,9 +130,12 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
 						transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 						transformer.transform(new DOMSource(doc), new StreamResult(sw));
 						object[1] = sw.toString();
+						if (log.isDebugEnabled()) {
+							log.debug("QVReflectionBasedSerializer write transformation for SOAPPartImpl " + object);
+						}
 					}
 				} catch (Exception ex) {
-					ex.printStackTrace();
+					log.warn(ex.getMessage(),ex);
 				}
 			}
 			return object;
@@ -142,6 +144,9 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
 			if (originalValue != null) {
 				Throwable t = (Throwable) originalValue;
 				throwable = t.toString();
+				if (log.isDebugEnabled()) {
+					log.debug("QVReflectionBasedSerializer write transformation for SOAPPartImpl " + throwable);
+				}
 			}
 			return throwable;
 		} else {
@@ -194,20 +199,27 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
 				mimeHeaders = new MimeHeaders();
 				Map<String, String> map = (Map<String, String>) serializedValue;
 				map.entrySet().stream().forEach(key -> mimeHeaders.addHeader(key.getKey(), key.getValue()));
+				if (log.isDebugEnabled()) {
+					log.debug("QVReflectionBasedSerializer read transformation for MimeHeaders "
+							+ mimeHeaders);
+				}
 				return mimeHeaders;
 			} else {
 				return null;
 			}
 		} else if (f.getType().equals(com.sun.xml.internal.messaging.saaj.soap.SOAPPartImpl.class)) {
 			SOAPMessage soapMsg = null;
-			MimeHeaders mHdrs = null;
 			if (serializedValue != null) {
 				String[] values = (String[]) serializedValue;
 				if (values[1] != null) {
 					try {
 						soapMsg = getSoapMessageFromString(null, values[1]);
+						if (log.isDebugEnabled()) {
+							log.debug("QVReflectionBasedSerializer read transformation for SOAPPartImpl "
+									+ soapMsg);
+						}
 					} catch (Exception ex) {
-						ex.printStackTrace();
+						log.warn(ex.getMessage(), ex);
 					}
 				}
 			}
@@ -217,6 +229,10 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
 			if (serializedValue != null) {
 				String str = (String) serializedValue;
 				throwable = new Throwable(str);
+				if (log.isDebugEnabled()) {
+					log.debug("QVReflectionBasedSerializer read transformation for Throwable "
+							+ throwable);
+				}
 			}
 			return throwable;
 		} else {
