@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8aef16a5-ac2a-48dd-a670-08c9c95d5333" name="Default Changelist" comment="" />
-    <ignored path="$PROJECT_DIR$/out/" />
+    <list default="true" id="c773794d-f234-41f1-9af5-4d1f3fca222c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/model/java/OrderReferenceData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/model/java/OrderReferenceDataDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/model/java/Waitable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/model/java/WaitableException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/serializer/WaitableTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/domain/OrderReferenceData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/domain/OrderReferenceDataDetail.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/domain/Waitable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/domain/WaitableException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/internal/pdx/QVReflectionBasedAutoSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/internal/pdx/QVReflectionBasedAutoSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/client/TestClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/domain/TestDomain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/domain/TestDomain.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,60 +28,169 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FUSProjectUsageTrigger">
-    <session id="-237359045">
+    <session id="1604617392">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
-          <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.23" value="1" />
-          <entry key="project.open.time.6" value="1" />
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="2" />
-          <entry key="java" value="59" />
-          <entry key="xml" value="5" />
+          <entry key="groovy" value="10" />
+          <entry key="java" value="42" />
+          <entry key="xml" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="2" />
-          <entry key="JAVA" value="56" />
-          <entry key="Scratch" value="3" />
-          <entry key="XML" value="5" />
+          <entry key="Groovy" value="10" />
+          <entry key="JAVA" value="42" />
+          <entry key="XML" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="3455" />
-          <entry key="xml" value="12" />
+          <entry key="dummy" value="174" />
+          <entry key="java" value="2222" />
+          <entry key="xml" value="26" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3024" />
-          <entry key="Scratch" value="431" />
-          <entry key="XML" value="12" />
+          <entry key="JAVA" value="2222" />
+          <entry key="PLAIN_TEXT" value="174" />
+          <entry key="XML" value="26" />
         </counts>
       </usages-collector>
-      <usages-collector id="statistics.js.language.service.starts" />
-      <usages-collector id="statistics.spring.boot.run.usages" />
-      <usages-collector id="statistics.vcs.git.usages" />
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/internal/pdx/QVSerializer.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/internal/pdx/QVReflectionBasedAutoSerializer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="25" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="25" />
+            <state relative-caret-position="302">
+              <caret line="201" column="3" lean-forward="true" selection-start-line="201" selection-start-column="3" selection-end-line="201" selection-end-column="3" />
+              <folding>
+                <element signature="method#getFieldType#0;class#QVReflectionBasedAutoSerializer#0" />
+                <element signature="method#transformFieldValue#0;class#QVReflectionBasedAutoSerializer#0" />
+                <element signature="method#writeTransform#0;class#QVReflectionBasedAutoSerializer#0" />
+                <element signature="method#readTransform#0;class#QVReflectionBasedAutoSerializer#0" />
+                <element signature="method#readThrowable#0;class#QVReflectionBasedAutoSerializer#0" />
+                <element signature="method#readSoapPart#0;class#QVReflectionBasedAutoSerializer#0" />
+                <element signature="method#readMimeHeaders#0;class#QVReflectionBasedAutoSerializer#0" />
+                <element signature="method#readXMLGregorianCalendar#0;class#QVReflectionBasedAutoSerializer#0" />
+                <element signature="method#readStackTraceElement#0;class#QVReflectionBasedAutoSerializer#0" />
+                <element signature="method#isStackTraceElement#0;class#QVReflectionBasedAutoSerializer#0" />
+                <element signature="method#isSoapPart#0;class#QVReflectionBasedAutoSerializer#0" />
+                <element signature="method#isXMLGregorianCalendar#0;class#QVReflectionBasedAutoSerializer#0" />
+                <element signature="method#isSpecialField#0;class#QVReflectionBasedAutoSerializer#0" />
+                <element signature="method#writeThrowable#0;class#QVReflectionBasedAutoSerializer#0" />
+                <element signature="method#writeSoapPart#0;class#QVReflectionBasedAutoSerializer#0" />
+                <element signature="method#writeMimeHeaders#0;class#QVReflectionBasedAutoSerializer#0" />
+                <element signature="method#writeXMLGregorianCalendar#0;class#QVReflectionBasedAutoSerializer#0" />
+                <element signature="method#writeStackTraceElement#0;class#QVReflectionBasedAutoSerializer#0" />
+                <element signature="method#getSoapMessageFromString#0;class#QVReflectionBasedAutoSerializer#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/model/groovy/ServiceException.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/serializer/WaitableTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="45" column="2" lean-forward="true" selection-start-line="45" selection-start-column="2" selection-end-line="45" selection-end-column="2" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/model/java/Waitable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="34" selection-start-line="34" selection-end-line="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/serializer/OrderReferenceDataTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/domain/TestDomain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/common/TestHarness.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="588">
+              <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#getRegion#0;class#TestHarness#0" />
+                <element signature="method#getClientCache#0;class#TestHarness#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/model/groovy/ServiceResponse.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/model/groovy/ServiceResponseStatus.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="77" selection-start-line="12" selection-start-column="77" selection-end-line="12" selection-end-column="77" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/model/groovy/ServiceStatusMessage.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -80,81 +206,83 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getClassInfo</find>
-      <find>isRelevant</find>
-      <find>getoffset</find>
-      <find>date</find>
+      <find>serial</find>
+      <find>debug</find>
+      <find>fail</find>
+      <find>readData</find>
+      <find>ServiceResponseStatus</find>
+      <find>throwable</find>
+      <find>toString</find>
+      <find>taskException</find>
+      <find>isSpecialField</find>
+      <find>taskEx</find>
+      <find>isS</find>
+      <find>assertTrue(clientRunner</find>
+      <find>assertTrue</find>
     </findStrings>
+    <replaceStrings>
+      <replace>testHarness.clientRunner</replace>
+      <replace>assertTrue(testHarness.clientRunner</replace>
+      <replace>assertNotNull</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
-    <option name="modificationStamps">
-      <map>
-        <entry key="$USER_HOME$/Downloads/demo 5" value="1475032254000" />
-        <entry key="$USER_HOME$/Downloads/kafka-0.10.1.0" value="4429465188000" />
-        <entry key="$PROJECT_DIR$/../../../NBCU/braintree/braintree_spring_example" value="1496177340000" />
-        <entry key="$PROJECT_DIR$/../../../NBCU/identity-sample-apps/authcode" value="1500477926000" />
-        <entry key="$PROJECT_DIR$/../../../NBCU/identity-sample-apps/resource-server" value="1494447793000" />
-        <entry key="$PROJECT_DIR$/../../../NBCU/saml/spring-security-saml" value="2979085056000" />
-        <entry key="$PROJECT_DIR$/../../../NBCU/spring-cloud-connectors" value="4470338703000" />
-        <entry key="$PROJECT_DIR$/../../../NBCU/spring-cloud-sso-connector" value="1495082044000" />
-        <entry key="$PROJECT_DIR$/../../../NBCU/spring-music" value="1490116483000" />
-        <entry key="$PROJECT_DIR$/../../../NBCU/tmp/identity-sample-apps/authcode" value="1495086920000" />
-        <entry key="$PROJECT_DIR$/../../../NBCU/uaa" value="5946770910000" />
-        <entry key="$PROJECT_DIR$/../../GEM/cf-gemfire-connector-examples" value="2989919148000" />
-        <entry key="$PROJECT_DIR$/../../GEM/gs-caching-gemfire/complete" value="1494958407000" />
-        <entry key="$PROJECT_DIR$/../../GEM/spring-cloud-gemfire-connector" value="4484980050000" />
-        <entry key="$PROJECT_DIR$/../../GEM/spring-gemfire-examples" value="2989965048000" />
-        <entry key="$PROJECT_DIR$/../../boot-two-way-ssl-example/client" value="1492737267000" />
-        <entry key="$PROJECT_DIR$/../../boot-two-way-ssl-example/server" value="1492541124000" />
-        <entry key="$PROJECT_DIR$/../../cook" value="1491541447000" />
-        <entry key="$PROJECT_DIR$/../../session/spring-session" value="2984424631000" />
-        <entry key="$PROJECT_DIR$/../../spring-music" value="1492019564000" />
-        <entry key="$PROJECT_DIR$/../../sreedhar/java-test-applications/web-servlet-2-application" value="1485789641000" />
-        <entry key="$PROJECT_DIR$/../../sreedhar/spring-music" value="1485628898000" />
-        <entry key="$PROJECT_DIR$/../../tmp/cook" value="1502759300000" />
-        <entry key="$PROJECT_DIR$/../../tmp/gs-accessing-data-gemfire/complete" value="1503086694000" />
-        <entry key="$PROJECT_DIR$/../../tmp/spring-music" value="1502850508000" />
-        <entry key="$PROJECT_DIR$/../../../disney/GKE/spring-music" value="1486585582000" />
-        <entry key="$PROJECT_DIR$/../../../disney/spring-music" value="1486585377000" />
-        <entry key="$PROJECT_DIR$/../../../../demos/DistributedTracingAppDemo" value="2963141018000" />
-        <entry key="$PROJECT_DIR$/../../../../demos/spring-music" value="1470267852000" />
-        <entry key="$PROJECT_DIR$/../../../../kafka/cf-kafka-servicebroker" value="1479678993000" />
-        <entry key="$PROJECT_DIR$/../../../../kafka/pcf-kafka-oss/cloudfoundry-service-broker" value="1479920204000" />
-        <entry key="$PROJECT_DIR$/../../../../kafka/pcf-kafka-oss/spring-cloud-cloudfoundry-service-broker" value="2960027146000" />
-        <entry key="$PROJECT_DIR$/../../../../kafka/spring-service-broker" value="1479678966000" />
-        <entry key="$PROJECT_DIR$/../../../../pcf/buildpacks/microservices-sidecar-example" value="17701197552000" />
-        <entry key="$PROJECT_DIR$/../../../../spring/spring-music" value="1486419379000" />
-        <entry key="$PROJECT_DIR$/../../../../spring/spring-security-saml" value="2966247902000" />
-      </map>
-    </option>
     <option name="projectSyncType">
       <map>
-        <entry key="$PROJECT_DIR$/../geode" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../geode-support" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../gorm-hibernate-sqlite" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../grails-petclinic" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../spring-cloud-gemfire-connector" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../sre-spring-caching/pivotal-gemfire-spring-session" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../session/pivotal-gemfire-spring-session" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../sigfx/spring-music" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../spring-security-saml-dsl" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../tmp/spring-cloud-gemfire-connector" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../tmp/spring-session-data-gemfire-example" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../tmp/spring-session-data-geode" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../kotlin/kotlin-koans" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../spring/spring-security/spring-security" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../spring/swiss-army-knife/petclinic-spring5-reactive" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../discover/audit-function" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../discover/client-testing-sample" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../discover/client-testing-sample/gemfire-sample-application" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../discover/discover-gemfire" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../discover/discover-gemfire/gemfire-client-framework" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../discover/discover-gemfire/gemfire-iam-adapter" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../discover/discover-gemfire/gemfire-security-manager-client" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../discover/discover-gemfire/gemfire-security-manager-server" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../discover/discover-sample-client/gemfire-sample-application" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../discover/gemfire-security-manager" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../discover/samples/discover-samples/basic-gemfire-function" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../grails-petclinic" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../test-app/gemfire-sample-application" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../meetup/PCC-Sample-App-PizzaStore" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../meetup/pcc-cacheable-rest-demo" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../samples/git/apache/geode-spark-connector" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../samples/git/apache/geode-spark/geode-spark-connector" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../samples/git/public/cloudcache-sample-app" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../samples/git/public/pivotal-gemfire-ldap" value="PREVIEW" />
       </map>
     </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/domain/ServiceException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/domain/ServiceResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/domain/ServiceStatusMessage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/domain/ServiceResponseStatus.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/groovy/ServiceException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/groovy/ServiceResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/groovy/ServiceResponseStatus.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/groovy/ServiceStatusMessage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/domain/OrderReferenceDataDetail.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/domain/OrderReferenceData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/domain/WaitableException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/groovy/ServiceException.groovy" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/groovy/ServiceResponse.groovy" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/groovy/ServiceResponseStatus.groovy" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/groovy/ServiceStatusMessage.groovy" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/domain/Waitable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/internal/pdx/QVReflectionBasedAutoSerializer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/model/groovy/ServiceResponse.groovy" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/internal/pdx/XMLGregorianCalendarPdxSerializer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/internal/pdx/StackTraceElementPdxSerializer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/internal/pdx/QVSerializer.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/client/TestClient.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/client/ServiceExceptionTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/client/TestHarness.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/serializer/ServiceExceptionTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/serializer/OrderReferenceDataTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/common/TestHarness.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/serializer/WaitableTest.java" />
       </list>
     </option>
   </component>
@@ -167,241 +295,169 @@
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
+        <option name="downloadDocsAutomatically" value="true" />
+        <option name="downloadSourcesAutomatically" value="true" />
         <option name="importAutomatically" value="true" />
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <expand>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="custompdx3" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="custompdx3" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
-        </path>
-      </expand>
-      <select />
-    </treeState>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="22" />
+    <option name="width" value="1920" />
+    <option name="height" value="1178" />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="821" />
-  </component>
-  <component name="ProjectInspectionProfilesVisibleTreeState">
-    <entry key="Project Default">
-      <profile-state>
-        <expanded-state>
-          <State>
-            <id />
-          </State>
-          <State>
-            <id>Code style issuesGo</id>
-          </State>
-          <State>
-            <id>Go</id>
-          </State>
-        </expanded-state>
-      </profile-state>
-    </entry>
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
-      <autoscrollFromSource ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="custompdx3" type="462c0819:PsiDirectoryNode" />
+              <item name="QVSerializer" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="custompdx3" type="462c0819:PsiDirectoryNode" />
+              <item name="QVSerializer" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="custompdx3" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="custompdx3" type="462c0819:PsiDirectoryNode" />
+              <item name="QVSerializer" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="custompdx3" type="462c0819:PsiDirectoryNode" />
+              <item name="QVSerializer" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="QVSerializer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="qvxp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="QVSerializer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="qvxp" type="462c0819:PsiDirectoryNode" />
               <item name="pdx" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="QVSerializer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="qvxp" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; 1.8 (1) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="QVSerializer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="qvxp" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="groovy" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; 1.8 (1) &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="rt.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="QVSerializer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="qvxp" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; 1.8 (1) &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="rt.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="javax" type="462c0819:PsiDirectoryNode" />
+              <item name="QVSerializer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; 1.8 (1) &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="rt.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="javax" type="462c0819:PsiDirectoryNode" />
-              <item name="xml" type="462c0819:PsiDirectoryNode" />
+              <item name="QVSerializer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; 1.8 (1) &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="rt.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="javax" type="462c0819:PsiDirectoryNode" />
-              <item name="xml" type="462c0819:PsiDirectoryNode" />
-              <item name="datatype" type="462c0819:PsiDirectoryNode" />
+              <item name="QVSerializer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: org.apache.geode:geode-core:1.6.0" type="70bed36:NamedLibraryElementNode" />
+              <item name="QVSerializer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: org.apache.geode:geode-core:1.6.0" type="70bed36:NamedLibraryElementNode" />
-              <item name="geode-core-1.6.0.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="QVSerializer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: org.apache.geode:geode-core:1.6.0" type="70bed36:NamedLibraryElementNode" />
-              <item name="geode-core-1.6.0.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="geode" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: org.apache.geode:geode-core:1.6.0" type="70bed36:NamedLibraryElementNode" />
-              <item name="geode-core-1.6.0.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="geode" type="462c0819:PsiDirectoryNode" />
-              <item name="pdx" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: xerces:xercesImpl:2.8.1" type="70bed36:NamedLibraryElementNode" />
-            </path>
-            <path>
-              <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: xerces:xercesImpl:2.8.1" type="70bed36:NamedLibraryElementNode" />
-              <item name="xercesImpl-2.8.1.jar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: xerces:xercesImpl:2.8.1" type="70bed36:NamedLibraryElementNode" />
-              <item name="xercesImpl-2.8.1.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="org" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: xerces:xercesImpl:2.8.1" type="70bed36:NamedLibraryElementNode" />
-              <item name="xercesImpl-2.8.1.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="org" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: xerces:xercesImpl:2.8.1" type="70bed36:NamedLibraryElementNode" />
-              <item name="xercesImpl-2.8.1.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="org" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-              <item name="xerces" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: xerces:xercesImpl:2.8.1" type="70bed36:NamedLibraryElementNode" />
-              <item name="xercesImpl-2.8.1.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="org" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-              <item name="xerces" type="462c0819:PsiDirectoryNode" />
-              <item name="jaxp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: xerces:xercesImpl:2.8.1" type="70bed36:NamedLibraryElementNode" />
-              <item name="xercesImpl-2.8.1.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="org" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-              <item name="xerces" type="462c0819:PsiDirectoryNode" />
-              <item name="jaxp" type="462c0819:PsiDirectoryNode" />
-              <item name="datatype" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-            </path>
-            <path>
-              <item name="custompdx3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-              <item name="Scratches" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
+              <item name="QVSerializer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="serializer" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536902884580" />
-    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JAVA" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539814539527" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="SDKs" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="settings.findbugs.project" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.tmobile.qvxp.internal.pdx" />
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.tmobile.qvxp.model" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.tmobile.qvxp.groovy" />
+      <recent name="com.tmobile.qvxp.domain" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -416,9 +472,23 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.com.tmobile.qvxp.test.serializer in custompdx3">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WaitableTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.tmobile.qvxp.test.serializer.WaitableTest" />
+      <module name="custompdx3" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tmobile.qvxp.test.serializer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -429,97 +499,223 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+    <configuration name="OrderReferenceDataTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="custompdx3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tmobile.qvxp.test.serializer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tmobile.qvxp.test.serializer" />
+      <option name="MAIN_CLASS_NAME" value="com.tmobile.qvxp.test.serializer.OrderReferenceDataTest" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scratch" type="Java Scratch" factoryName="Java Scratch" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Scratch" />
-      <option name="SCRATCH_FILE_URL" value="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.java" />
+    <configuration name="WaitableTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="custompdx3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tmobile.qvxp.test.serializer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tmobile.qvxp.test.serializer" />
+      <option name="MAIN_CLASS_NAME" value="com.tmobile.qvxp.test.serializer.WaitableTest" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WaitableTest.testThatServiceExceptionWithCauseAndMessageSerialized" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="custompdx3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tmobile.qvxp.test.serializer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tmobile.qvxp.test.serializer" />
+      <option name="MAIN_CLASS_NAME" value="com.tmobile.qvxp.test.serializer.WaitableTest" />
+      <option name="METHOD_NAME" value="testThatServiceExceptionWithCauseAndMessageSerialized" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.tmobile.qvxp.test.serializer in custompdx3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="custompdx3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tmobile.qvxp.test.serializer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tmobile.qvxp.test.serializer" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <properties />
       <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.WaitableTest" />
+      <item itemvalue="JUnit.WaitableTest" />
+      <item itemvalue="JUnit.OrderReferenceDataTest" />
+      <item itemvalue="JUnit.WaitableTest.testThatServiceExceptionWithCauseAndMessageSerialized" />
+      <item itemvalue="JUnit.com.tmobile.qvxp.test.serializer in custompdx3" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Java Scratch.Scratch" />
+        <item itemvalue="JUnit.com.tmobile.qvxp.test.serializer in custompdx3" />
+        <item itemvalue="JUnit.OrderReferenceDataTest" />
+        <item itemvalue="JUnit.WaitableTest" />
+        <item itemvalue="JUnit.WaitableTest.testThatServiceExceptionWithCauseAndMessageSerialized" />
+        <item itemvalue="Application.WaitableTest" />
       </list>
     </recent_temporary>
   </component>
   <component name="SvnConfiguration">
-    <configuration>$USER_HOME$/.subversion</configuration>
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8aef16a5-ac2a-48dd-a670-08c9c95d5333" name="Default Changelist" comment="" />
-      <created>1536818372865</created>
+      <changelist id="c773794d-f234-41f1-9af5-4d1f3fca222c" name="Default Changelist" comment="" />
+      <created>1539372631005</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1536818372865</updated>
-      <workItem from="1536818374740" duration="18172000" />
-      <workItem from="1536946222104" duration="1345000" />
-      <workItem from="1537128376146" duration="2170000" />
-      <workItem from="1537457630873" duration="83000" />
+      <updated>1539372631005</updated>
+      <workItem from="1539372632875" duration="12923000" />
+      <workItem from="1539723449871" duration="23000" />
+      <workItem from="1539723491180" duration="11810000" />
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="OrderReferenceDataTest - 2018.10.17 at 12h 23m 11s.xml">
+      <configuration name="OrderReferenceDataTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ServiceExceptionTest - 2018.10.17 at 12h 27m 31s.xml">
+      <configuration name="ServiceExceptionTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OrderReferenceDataTest - 2018.10.17 at 12h 27m 58s.xml">
+      <configuration name="OrderReferenceDataTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WaitableTest - 2018.10.17 at 12h 33m 29s.xml">
+      <configuration name="WaitableTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="com_tmobile_qvxp_test_serializer_in_custompdx3 - 2018.10.17 at 12h 33m 59s.xml">
+      <configuration name="com.tmobile.qvxp.test.serializer in custompdx3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WaitableTest - 2018.10.17 at 12h 34m 14s.xml">
+      <configuration name="WaitableTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OrderReferenceDataTest - 2018.10.17 at 12h 34m 21s.xml">
+      <configuration name="OrderReferenceDataTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OrderReferenceDataTest - 2018.10.17 at 12h 36m 05s.xml">
+      <configuration name="OrderReferenceDataTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="com_tmobile_qvxp_test_serializer_in_custompdx3 - 2018.10.17 at 12h 36m 13s.xml">
+      <configuration name="com.tmobile.qvxp.test.serializer in custompdx3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="com_tmobile_qvxp_test_serializer_in_custompdx3 - 2018.10.17 at 12h 48m 39s.xml">
+      <configuration name="com.tmobile.qvxp.test.serializer in custompdx3" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21770000" />
+    <option name="totallyTimeSpent" value="24756000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="821" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="22" width="1920" height="1178" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2639485" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2550586" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Nl-Palette" order="2" />
-      <window_info id="Capture Tool" order="3" />
-      <window_info id="Designer" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Image Layers" order="6" />
-      <window_info id="Web" order="7" side_tool="true" />
-      <window_info id="Favorites" order="8" side_tool="true" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.46016484" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39918256" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3296501" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49893504" visible="true" weight="0.3047882" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Docker" order="8" />
-      <window_info anchor="bottom" id="Messages" order="9" weight="0.32880434" />
-      <window_info anchor="bottom" id="Java Enterprise" order="10" />
-      <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Spring" order="12" />
-      <window_info anchor="bottom" id="Terminal" order="13" />
-      <window_info anchor="bottom" id="Graph Database Console" order="14" />
-      <window_info anchor="bottom" id="Database Changes" order="15" show_stripe_button="false" />
-      <window_info anchor="bottom" id="IvyIDEA" order="16" />
-      <window_info anchor="right" id="Dynamic Properties" order="0" />
-      <window_info anchor="right" id="Commander" order="1" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Maven Projects" order="5" visible="true" weight="0.1502146" />
-      <window_info anchor="right" id="Properties" order="6" />
-      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50106496" side_tool="true" weight="0.3047882" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3296501" />
+      <window_info anchor="bottom" id="FindBugs-IDEA" order="12" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Maven Projects" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="right" id="Capture Analysis" order="9" />
-      <window_info anchor="right" id="Bean Validation" order="10" />
-      <window_info anchor="right" id="Theme Preview" order="11" />
-      <window_info anchor="right" id="Graph Database" order="12" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2550586" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49893504" visible="true" weight="0.3047882" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50106496" side_tool="true" weight="0.3047882" />
+      <window_info anchor="bottom" id="Messages" order="11" />
+      <window_info anchor="bottom" id="FindBugs-IDEA" order="12" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Maven Projects" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -527,121 +723,257 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/serializer/WaitableTest.java</url>
+          <line>120</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/src.zip!/java/util/Collections.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/domain/ServiceException.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/domain/ServiceResponse.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/domain/ServiceResponseStatus.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/domain/ServiceStatusMessage.java" />
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip!/java/lang/Exception.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="4787" column="30" selection-start-line="4787" selection-start-column="30" selection-end-line="4787" selection-end-column="30" />
+        <state relative-caret-position="315">
+          <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/geode/geode-core/1.6.0/geode-core-1.6.0-sources.jar!/org/apache/geode/pdx/internal/AutoSerializableManager.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip!/java/lang/Throwable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="1972" column="17" selection-start-line="1972" selection-start-column="17" selection-end-line="1972" selection-end-column="17" />
+        <state relative-caret-position="1530">
+          <caret line="126" column="6" selection-start-line="126" selection-start-column="6" selection-end-line="126" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/src.zip!/java/util/TimeZone.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/io/pivotal/gemfire/geode-core/9.5.1/geode-core-9.5.1-sources.jar!/org/apache/geode/pdx/internal/AutoSerializableManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-418">
-          <caret line="171" column="22" lean-forward="true" selection-start-line="171" selection-start-column="22" selection-end-line="171" selection-end-column="22" />
+        <state relative-caret-position="678">
+          <caret line="2047" column="24" selection-start-line="2047" selection-start-column="16" selection-end-line="2047" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/src.zip!/java/util/Calendar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="445" column="28" selection-start-line="445" selection-start-column="28" selection-end-line="445" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.9.5/jackson-databind-2.9.5.jar!/com/fasterxml/jackson/databind/ext/CoreXMLSerializers.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="62" column="20" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.9.5/jackson-databind-2.9.5-sources.jar!/com/fasterxml/jackson/databind/ext/CoreXMLSerializers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="755">
-          <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/src.zip!/javax/xml/datatype/XMLGregorianCalendar.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/groovy/ServiceStatusMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
-          <caret line="25" column="8" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="26" />
+          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/groovy/ServiceException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#697#698#0" expanded="true" />
+            <element signature="e#727#728#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/groovy/ServiceResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="14" lean-forward="true" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+          <folding>
+            <element signature="e#268#269#0" expanded="true" />
+            <element signature="e#325#326#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/groovy/ServiceResponseStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/pivotal/gemfire/geode-core/9.5.1/geode-core-9.5.1-sources.jar!/org/apache/geode/pdx/ReflectionBasedAutoSerializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1049">
+          <caret line="586" column="16" selection-start-line="586" selection-start-column="16" selection-end-line="586" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/model/java/OrderReferenceDataDetail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/model/java/WaitableException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="45" selection-start-line="2" selection-start-column="45" selection-end-line="2" selection-end-column="45" />
+          <folding>
+            <element signature="e#185#186#0" expanded="true" />
+            <element signature="e#202#203#0" expanded="true" />
+            <element signature="e#244#245#0" expanded="true" />
+            <element signature="e#264#265#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/model/java/OrderReferenceData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="26" column="21" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
+        <state relative-caret-position="103">
+          <caret line="38" column="42" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/xerces/xercesImpl/2.8.1/xercesImpl-2.8.1.jar!/org/apache/xerces/jaxp/datatype/XMLGregorianCalendarImpl.class">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/domain/TestDomain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="20" column="6" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
+        <state relative-caret-position="210">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/common/TestHarness.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="68" />
+        <state relative-caret-position="588">
+          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getRegion#0;class#TestHarness#0" />
+            <element signature="method#getClientCache#0;class#TestHarness#0" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/src.zip!/javax/xml/datatype/DatatypeFactory.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/serializer/OrderReferenceDataTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="141" column="34" selection-start-line="141" selection-start-column="34" selection-end-line="141" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/internal/pdx/XMLGregorianCalendarPdxSerializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="26" column="20" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/internal/pdx/StackTraceElementPdxSerializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="33" column="23" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/geode/geode-core/1.6.0/geode-core-1.6.0-sources.jar!/org/apache/geode/pdx/ReflectionBasedAutoSerializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1005">
-          <caret line="90" column="68" selection-start-line="90" selection-start-column="64" selection-end-line="90" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/internal/pdx/QVSerializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="25" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="25" />
+        <state relative-caret-position="195">
+          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/model/java/Waitable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/serializer/WaitableTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="45" column="2" lean-forward="true" selection-start-line="45" selection-start-column="2" selection-end-line="45" selection-end-column="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/internal/pdx/QVReflectionBasedAutoSerializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="201" column="3" lean-forward="true" selection-start-line="201" selection-start-column="3" selection-end-line="201" selection-end-column="3" />
+          <folding>
+            <element signature="method#getFieldType#0;class#QVReflectionBasedAutoSerializer#0" />
+            <element signature="method#transformFieldValue#0;class#QVReflectionBasedAutoSerializer#0" />
+            <element signature="method#writeTransform#0;class#QVReflectionBasedAutoSerializer#0" />
+            <element signature="method#readTransform#0;class#QVReflectionBasedAutoSerializer#0" />
+            <element signature="method#readThrowable#0;class#QVReflectionBasedAutoSerializer#0" />
+            <element signature="method#readSoapPart#0;class#QVReflectionBasedAutoSerializer#0" />
+            <element signature="method#readMimeHeaders#0;class#QVReflectionBasedAutoSerializer#0" />
+            <element signature="method#readXMLGregorianCalendar#0;class#QVReflectionBasedAutoSerializer#0" />
+            <element signature="method#readStackTraceElement#0;class#QVReflectionBasedAutoSerializer#0" />
+            <element signature="method#isStackTraceElement#0;class#QVReflectionBasedAutoSerializer#0" />
+            <element signature="method#isSoapPart#0;class#QVReflectionBasedAutoSerializer#0" />
+            <element signature="method#isXMLGregorianCalendar#0;class#QVReflectionBasedAutoSerializer#0" />
+            <element signature="method#isSpecialField#0;class#QVReflectionBasedAutoSerializer#0" />
+            <element signature="method#writeThrowable#0;class#QVReflectionBasedAutoSerializer#0" />
+            <element signature="method#writeSoapPart#0;class#QVReflectionBasedAutoSerializer#0" />
+            <element signature="method#writeMimeHeaders#0;class#QVReflectionBasedAutoSerializer#0" />
+            <element signature="method#writeXMLGregorianCalendar#0;class#QVReflectionBasedAutoSerializer#0" />
+            <element signature="method#writeStackTraceElement#0;class#QVReflectionBasedAutoSerializer#0" />
+            <element signature="method#getSoapMessageFromString#0;class#QVReflectionBasedAutoSerializer#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/model/groovy/ServiceResponse.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/model/groovy/ServiceResponseStatus.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="77" selection-start-line="12" selection-start-column="77" selection-end-line="12" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/model/groovy/ServiceStatusMessage.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/model/groovy/ServiceException.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
-          <last-edited>activesupport (v4.2.7, RVM: ruby-2.3.1) [gem]</last-edited>
+          <last-edited>scala-sdk-2.10.4</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -657,7 +989,20 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.3015873" />
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>custompdx3</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -677,6 +1022,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>Maven: antlr:antlr:2.7.7</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

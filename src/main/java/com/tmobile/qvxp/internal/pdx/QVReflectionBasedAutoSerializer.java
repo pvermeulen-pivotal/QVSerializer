@@ -8,7 +8,6 @@ import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.soap.MessageFactory;
@@ -37,7 +36,7 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
   private final Logger log = LoggerFactory.getLogger(QVReflectionBasedAutoSerializer.class);
 
   public QVReflectionBasedAutoSerializer() {
-    super(false, ".*,");
+    super(false, ".*");
   }
 
   @Override
@@ -54,9 +53,9 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
     if (isSoapPart(f)) {
       return FieldType.STRING_ARRAY;
     }
-    if (isThrowable(f)) {
+   /* if (isThrowable(f)) {
       return FieldType.STRING;
-    }
+    }*/
     return super.getFieldType(f, clazz);
   }
 
@@ -80,8 +79,12 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
     if (isSoapPart(f)) {
       return writeSoapPart(originalValue);
     }
-    if (isThrowable(f)) {
+   /* if (isThrowable(f)) {
       return writeThrowable(originalValue);
+    }*/
+    if (log.isDebugEnabled()) {
+      log.debug("QVReflectionBasedSerializer writeTransform : using ReflectionBasedAutoSerializer" +
+              " " + f.getType());
     }
     return super.writeTransform(f, clazz, originalValue);
   }
@@ -100,8 +103,11 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
     if (isSoapPart(f)) {
       return readSoapPart(serializedValue);
     }
-    if (isThrowable(f)) {
+  /*  if (isThrowable(f)) {
       return readThrowable(serializedValue);
+    }*/
+    if (log.isDebugEnabled()) {
+      log.debug("QVReflectionBasedSerializer readTransform : using ReflectionBasedAutoSerializer " + f.getType());
     }
     return super.readTransform(f, clazz, serializedValue);
   }
@@ -110,6 +116,10 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
     Throwable throwable = null;
     if (serializedValue != null) {
       String str = (String) serializedValue;
+      if (log.isDebugEnabled()) {
+        log.debug("QVReflectionBasedSerializer read transformation for Throwable "
+                + str);
+      }
       throwable = new Throwable(str);
     }
     return throwable;
@@ -124,6 +134,9 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
         try {
           soapMsg = getSoapMessageFromString(null, values[1]);
         } catch (Exception ex) {
+          if (log.isDebugEnabled()) {
+            log.debug("QVReflectionBasedSerializer read transformation for SoapPart exception" + ex);
+          }
           ex.printStackTrace();
         }
       }
@@ -205,13 +218,17 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
   }
 
   private boolean isSpecialField(Field f) {
-    return isXMLGregorianCalendar(f) || isStackTraceElement(f) || isMimeHeaders(f) || isSoapPart(f) || isThrowable(f);
+    return isXMLGregorianCalendar(f) || isStackTraceElement(f) || isMimeHeaders(f) || isSoapPart(f);// || isThrowable(f);
   }
 
   private Object writeThrowable(Object originalValue) {
     String throwable = null;
     if (originalValue != null) {
       Throwable t = (Throwable) originalValue;
+      if (log.isDebugEnabled()) {
+        log.debug("QVReflectionBasedSerializer write transformation for Throwable "
+                + throwable);
+      }
       throwable = t.toString();
     }
     return throwable;

@@ -5,8 +5,8 @@ import java.util.Date;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import com.tmobile.qvxp.domain.OrderReferenceData;
-import com.tmobile.qvxp.domain.Waitable;
+import com.tmobile.qvxp.model.java.OrderReferenceData;
+import com.tmobile.qvxp.model.java.Waitable;
 
 public class TestDomain implements Serializable {
 	private static final long serialVersionUID = -4662762081845493022L;
