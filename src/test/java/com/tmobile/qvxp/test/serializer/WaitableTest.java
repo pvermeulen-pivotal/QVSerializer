@@ -24,26 +24,30 @@ public class WaitableTest {
   private final TestHarness testHarness = new TestHarness();
   private Waitable waitable;
 
-  /*@Test
+  @Test
   public void testThatDefaultWaitableIsSerialized() {
-    Assert.assertNotNull(testHarness.clientRunner(new WaitableException(),null));
+    waitable = getWaitable(new WaitableException());
+    Assert.assertNotNull(testHarness.clientRunner(waitable,null));
   }
 
   @Test
   public void testThatDefaultServiceExceptionSerialized() {
-    Assert.assertNotNull(testHarness.clientRunner(new ServiceException(),null));
+    waitable = getWaitable(new ServiceException());
+    Assert.assertNotNull(testHarness.clientRunner(waitable,null));
   }
 
   @Test
   public void testThatWaitableWithMessageSerialized() {
-    Assert.assertNotNull(testHarness.clientRunner(getWaitableException(),null));
+    waitable = getWaitable(getWaitableException());
+    Assert.assertNotNull(testHarness.clientRunner(waitable,null));
   }
 
   @Test
   public void testThatServiceExceptionWithMessageSerialized() {
-    Assert.assertNotNull(testHarness.clientRunner(getServiceException(),null));
+    waitable = getWaitable(getServiceException());
+    Assert.assertNotNull(testHarness.clientRunner(waitable,null));
   }
-*/
+
   @Test
   public void testThatServiceExceptionWithCauseAndMessageSerialized() {
     waitable = getWaitable(getServiceExceptionWithCause());
