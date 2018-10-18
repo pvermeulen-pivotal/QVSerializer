@@ -48,9 +48,6 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
     if (isSoapPart(f)) {
       return FieldType.STRING_ARRAY;
     }
-   /* if (isThrowable(f)) {
-      return FieldType.STRING;
-    }*/
     return super.getFieldType(f, clazz);
   }
 
@@ -62,7 +59,6 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
   @SuppressWarnings("restriction")
   @Override
   public Object writeTransform(Field f, Class<?> clazz, Object originalValue) {
-    System.out.println("QVReflectionBasedSerializer writeTransform" + f.getType().getSimpleName());
     if (isStackTraceElement(f)) {
       return writeStackTraceElement(originalValue);
     }
@@ -104,26 +100,10 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
     if (isSoapPart(f)) {
       return readSoapPart(serializedValue);
     }
-   /* if (isThrowable(f)) {
-      return readThrowable(serializedValue);
-    }*/
     if (log.isDebugEnabled()) {
       log.debug("QVReflectionBasedSerializer readTransform : using ReflectionBasedAutoSerializer " + f.getType());
     }
     return super.readTransform(f, clazz, serializedValue);
-  }
-
-  private Object readThrowable(Object serializedValue) {
-    Throwable throwable = null;
-    if (serializedValue != null) {
-      String str = (String) serializedValue;
-      if (log.isDebugEnabled()) {
-        log.debug("QVReflectionBasedSerializer read transformation for Throwable "
-                + str);
-      }
-      throwable = new Throwable(str);
-    }
-    return throwable;
   }
 
   private Object readSoapPart(Object serializedValue) {
@@ -220,20 +200,6 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
 
   private boolean isSpecialField(Field f) {
     return isXMLGregorianCalendar(f) || isStackTraceElement(f) || isMimeHeaders(f) || isSoapPart(f) || isThrowable(f);
-  }
-
-  private Object writeThrowable(Object originalValue) {
-    String throwable = null;
-    if (originalValue != null) {
-      Throwable t = (Throwable) originalValue;
-
-      if (log.isDebugEnabled()) {
-        log.debug("QVReflectionBasedSerializer write transformation for Throwable "
-                + throwable);
-      }
-      throwable = t.toString();
-    }
-    return throwable;
   }
 
   private Object writeSoapPart(Object originalValue) {
