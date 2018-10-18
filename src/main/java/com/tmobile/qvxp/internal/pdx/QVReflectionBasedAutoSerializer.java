@@ -1,27 +1,5 @@
 package com.tmobile.qvxp.internal.pdx;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.StringWriter;
-import java.lang.reflect.Field;
-import java.nio.charset.Charset;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.XMLGregorianCalendar;
-import javax.xml.soap.MessageFactory;
-import javax.xml.soap.MimeHeader;
-import javax.xml.soap.MimeHeaders;
-import javax.xml.soap.SOAPBody;
-import javax.xml.soap.SOAPException;
-import javax.xml.soap.SOAPMessage;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
 import org.apache.geode.cache.Declarable;
 import org.apache.geode.pdx.FieldType;
 import org.apache.geode.pdx.PdxSerializer;
@@ -30,6 +8,23 @@ import org.apache.xerces.jaxp.datatype.DatatypeFactoryImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
+
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.soap.*;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.lang.reflect.Field;
+import java.nio.charset.Charset;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializer
         implements PdxSerializer, Declarable {
@@ -67,6 +62,7 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
   @SuppressWarnings("restriction")
   @Override
   public Object writeTransform(Field f, Class<?> clazz, Object originalValue) {
+    System.out.println("QVReflectionBasedSerializer writeTransform" + f.getType().getSimpleName());
     if (isStackTraceElement(f)) {
       return writeStackTraceElement(originalValue);
     }
@@ -79,14 +75,19 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
     if (isSoapPart(f)) {
       return writeSoapPart(originalValue);
     }
-   /* if (isThrowable(f)) {
-      return writeThrowable(originalValue);
-    }*/
+    if (isThrowable(f)) {
+      Throwable t = (Throwable) originalValue;
+      if (t.getCause() == null) {
+        t.initCause(new Throwable());
+      }
+      return super.writeTransform(f, clazz, t);
+    }
     if (log.isDebugEnabled()) {
       log.debug("QVReflectionBasedSerializer writeTransform : using ReflectionBasedAutoSerializer" +
               " " + f.getType());
     }
     return super.writeTransform(f, clazz, originalValue);
+
   }
 
   @Override
@@ -103,7 +104,7 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
     if (isSoapPart(f)) {
       return readSoapPart(serializedValue);
     }
-  /*  if (isThrowable(f)) {
+   /* if (isThrowable(f)) {
       return readThrowable(serializedValue);
     }*/
     if (log.isDebugEnabled()) {
@@ -218,13 +219,14 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
   }
 
   private boolean isSpecialField(Field f) {
-    return isXMLGregorianCalendar(f) || isStackTraceElement(f) || isMimeHeaders(f) || isSoapPart(f);// || isThrowable(f);
+    return isXMLGregorianCalendar(f) || isStackTraceElement(f) || isMimeHeaders(f) || isSoapPart(f) || isThrowable(f);
   }
 
   private Object writeThrowable(Object originalValue) {
     String throwable = null;
     if (originalValue != null) {
       Throwable t = (Throwable) originalValue;
+
       if (log.isDebugEnabled()) {
         log.debug("QVReflectionBasedSerializer write transformation for Throwable "
                 + throwable);
