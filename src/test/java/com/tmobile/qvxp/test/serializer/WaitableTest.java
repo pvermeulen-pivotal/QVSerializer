@@ -1,8 +1,6 @@
 package com.tmobile.qvxp.test.serializer;
 
-import com.sun.xml.internal.messaging.saaj.soap.MessageFactoryImpl;
 import com.sun.xml.internal.messaging.saaj.soap.MessageImpl;
-import com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl;
 import com.sun.xml.internal.messaging.saaj.soap.ver1_1.Message1_1Impl;
 import com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPPart1_1Impl;
 import com.tmobile.qvxp.model.groovy.ServiceException;
@@ -11,11 +9,13 @@ import com.tmobile.qvxp.model.groovy.ServiceStatusMessage;
 import com.tmobile.qvxp.model.java.Waitable;
 import com.tmobile.qvxp.model.java.WaitableException;
 import com.tmobile.qvxp.test.common.TestHarness;
-import com.tmobile.qvxp.test.domain.TestDomain;
 import org.junit.Assert;
 import org.junit.Test;
 
-import javax.xml.soap.*;
+import javax.xml.soap.MessageFactory;
+import javax.xml.soap.MimeHeaders;
+import javax.xml.soap.SOAPException;
+import javax.xml.soap.SOAPMessage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;

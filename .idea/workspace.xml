@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9eb76ade-88d9-4136-9c8a-4a77c94d8c5b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/internal/pdx/QVReflectionBasedAutoSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/internal/pdx/QVReflectionBasedAutoSerializer.java" afterDir="false" />
@@ -25,30 +24,30 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="8" />
+          <entry key="class" value="10" />
           <entry key="groovy" value="4" />
-          <entry key="java" value="23" />
-          <entry key="xml" value="1" />
+          <entry key="java" value="26" />
+          <entry key="xml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="8" />
+          <entry key="CLASS" value="10" />
           <entry key="Groovy" value="4" />
-          <entry key="JAVA" value="23" />
-          <entry key="XML" value="1" />
+          <entry key="JAVA" value="26" />
+          <entry key="XML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="31" />
-          <entry key="java" value="918" />
+          <entry key="java" value="1289" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="918" />
+          <entry key="JAVA" value="1289" />
           <entry key="PLAIN_TEXT" value="31" />
           <entry key="XML" value="1" />
         </counts>
@@ -57,76 +56,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/serializer/WaitableTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="145" column="9" lean-forward="true" selection-start-line="145" selection-start-column="9" selection-end-line="145" selection-end-column="9" />
+            <state relative-caret-position="-140">
+              <caret line="156" column="16" lean-forward="true" selection-start-line="156" selection-start-column="16" selection-end-line="156" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/jre/lib/rt.jar!/com/sun/xml/internal/messaging/saaj/soap/MessageFactoryImpl.class">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
-              <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+            <state relative-caret-position="92">
+              <caret line="33" column="12" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip!/javax/xml/soap/SOAPMessage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4790">
-              <caret line="103" column="22" selection-start-line="103" selection-start-column="22" selection-end-line="103" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/jre/lib/rt.jar!/com/sun/xml/internal/messaging/saaj/soap/ver1_1/SOAPPart1_1Impl.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="60" />
-              <folding>
-                <element signature="e#1019#1020#0" expanded="true" />
-                <element signature="e#1043#1044#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/jre/lib/rt.jar!/com/sun/xml/internal/messaging/saaj/soap/MessageImpl.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-935">
-              <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/internal/pdx/QVReflectionBasedAutoSerializer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1458">
-              <caret line="25" column="32" lean-forward="true" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+            <state relative-caret-position="765">
+              <caret line="251" column="16" lean-forward="true" selection-start-line="251" selection-start-column="16" selection-end-line="251" selection-end-column="16" />
               <folding>
-                <element signature="e#2106#2107#0" expanded="true" />
-                <element signature="e#2165#2166#0" expanded="true" />
-                <element signature="e#1863#1895#0" />
+                <element signature="method#getFieldType#0;class#QVReflectionBasedAutoSerializer#0" />
+                <element signature="method#transformFieldValue#0;class#QVReflectionBasedAutoSerializer#0" />
+                <element signature="e#2088#2120#0" />
+                <element signature="method#writeTransform#0;class#QVReflectionBasedAutoSerializer#0" />
                 <element signature="method#readTransform#0;class#QVReflectionBasedAutoSerializer#0" />
+                <element signature="method#readSoapPart#0;class#QVReflectionBasedAutoSerializer#0" />
                 <element signature="method#readMimeHeaders#0;class#QVReflectionBasedAutoSerializer#0" />
                 <element signature="method#readXMLGregorianCalendar#0;class#QVReflectionBasedAutoSerializer#0" />
                 <element signature="method#readStackTraceElement#0;class#QVReflectionBasedAutoSerializer#0" />
                 <element signature="method#isStackTraceElement#0;class#QVReflectionBasedAutoSerializer#0" />
                 <element signature="method#isSoapPart#0;class#QVReflectionBasedAutoSerializer#0" />
                 <element signature="method#isXMLGregorianCalendar#0;class#QVReflectionBasedAutoSerializer#0" />
+                <element signature="method#isSpecialField#0;class#QVReflectionBasedAutoSerializer#0" />
                 <element signature="method#writeSoapPart#0;class#QVReflectionBasedAutoSerializer#0" />
-                <element signature="method#writeSoapDocument#0;class#QVReflectionBasedAutoSerializer#0" />
                 <element signature="method#writeMimeHeaders#0;class#QVReflectionBasedAutoSerializer#0" />
                 <element signature="method#writeXMLGregorianCalendar#0;class#QVReflectionBasedAutoSerializer#0" />
                 <element signature="method#writeStackTraceElement#0;class#QVReflectionBasedAutoSerializer#0" />
@@ -137,45 +104,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip!/org/w3c/dom/Document.java">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip!/javax/xml/soap/SOAPHeader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1597">
-              <caret line="521" column="18" selection-start-line="521" selection-start-column="18" selection-end-line="521" selection-end-column="18" />
+            <state relative-caret-position="-1253">
+              <caret line="69" column="17" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/io/pivotal/gemfire/geode-core/9.5.1/geode-core-9.5.1-sources.jar!/org/apache/geode/pdx/internal/AutoSerializableManager.java">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/jre/lib/rt.jar!/com/sun/xml/internal/messaging/saaj/soap/SOAPDocumentImpl.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="2023" selection-start-line="2023" selection-end-line="2023" />
-              <folding>
-                <element signature="e#5770#5771#0" expanded="true" />
-                <element signature="e#5808#5809#0" expanded="true" />
-                <element signature="e#25854#25855#0" expanded="true" />
-                <element signature="e#25907#25908#0" expanded="true" />
-                <element signature="e#26011#26012#0" expanded="true" />
-                <element signature="e#26046#26047#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/io/pivotal/gemfire/geode-core/9.5.1/geode-core-9.5.1-sources.jar!/org/apache/geode/pdx/internal/PdxWriterImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="328" selection-start-line="328" selection-end-line="328" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/io/pivotal/gemfire/geode-core/9.5.1/geode-core-9.5.1-sources.jar!/org/apache/geode/pdx/internal/PdxOutputStream.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="81" selection-start-line="81" selection-end-line="81" />
+            <state relative-caret-position="-1007">
+              <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -221,8 +162,8 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/model/java/Waitable.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/serializer/WaitableTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/internal/pdx/QVReflectionBasedAutoSerializer.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/serializer/WaitableTest.java" />
       </list>
     </option>
   </component>
@@ -383,7 +324,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539972548648" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539975669220" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -400,7 +341,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.WaitableTest.testThatDefaultWaitableIsSerialized">
+  <component name="RunManager" selected="JUnit.com.tmobile.qvxp.test in custompdx3">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -428,23 +369,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WaitableTest.testNullCase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="custompdx3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.tmobile.qvxp.test.serializer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.tmobile.qvxp.test.serializer" />
-      <option name="MAIN_CLASS_NAME" value="com.tmobile.qvxp.test.serializer.WaitableTest" />
-      <option name="METHOD_NAME" value="testNullCase" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="WaitableTest.testThatDefaultWaitableIsSerialized" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="custompdx3" />
       <extension name="coverage">
@@ -456,6 +380,23 @@
       <option name="PACKAGE_NAME" value="com.tmobile.qvxp.test.serializer" />
       <option name="MAIN_CLASS_NAME" value="com.tmobile.qvxp.test.serializer.WaitableTest" />
       <option name="METHOD_NAME" value="testThatDefaultWaitableIsSerialized" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WaitableTest.testThatServiceExceptionWithCauseAndMessageSerialized" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="custompdx3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tmobile.qvxp.test.serializer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tmobile.qvxp.test.serializer" />
+      <option name="MAIN_CLASS_NAME" value="com.tmobile.qvxp.test.serializer.WaitableTest" />
+      <option name="METHOD_NAME" value="testThatServiceExceptionWithCauseAndMessageSerialized" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
@@ -518,19 +459,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.WaitableTest.testNullCase" />
       <item itemvalue="JUnit.com.tmobile.qvxp.test in custompdx3" />
       <item itemvalue="JUnit.WaitableTest.testThatServiceExceptionWithStatusAndResponseSerialized" />
       <item itemvalue="JUnit.WaitableTest" />
       <item itemvalue="JUnit.WaitableTest.testThatDefaultWaitableIsSerialized" />
+      <item itemvalue="JUnit.WaitableTest.testThatServiceExceptionWithCauseAndMessageSerialized" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.WaitableTest.testThatDefaultWaitableIsSerialized" />
-        <item itemvalue="JUnit.WaitableTest" />
-        <item itemvalue="JUnit.WaitableTest.testThatServiceExceptionWithStatusAndResponseSerialized" />
         <item itemvalue="JUnit.com.tmobile.qvxp.test in custompdx3" />
-        <item itemvalue="JUnit.WaitableTest.testNullCase" />
+        <item itemvalue="JUnit.WaitableTest.testThatServiceExceptionWithCauseAndMessageSerialized" />
+        <item itemvalue="JUnit.WaitableTest" />
+        <item itemvalue="JUnit.WaitableTest.testThatDefaultWaitableIsSerialized" />
+        <item itemvalue="JUnit.WaitableTest.testThatServiceExceptionWithStatusAndResponseSerialized" />
       </list>
     </recent_temporary>
   </component>
@@ -544,44 +485,44 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1539895478809</updated>
-      <workItem from="1539895480298" duration="11464000" />
+      <workItem from="1539895480298" duration="14363000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="WaitableTest_testThatDefaultWaitableIsSerialized - 2018.10.19 at 11h 45m 21s.xml">
-      <configuration name="WaitableTest.testThatDefaultWaitableIsSerialized" configurationId="JUnit" />
+    <history-entry file="WaitableTest_testThatServiceExceptionWithCauseAndMessageSerialized - 2018.10.19 at 12h 20m 51s.xml">
+      <configuration name="WaitableTest.testThatServiceExceptionWithCauseAndMessageSerialized" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WaitableTest_testThatDefaultWaitableIsSerialized - 2018.10.19 at 11h 47m 59s.xml">
-      <configuration name="WaitableTest.testThatDefaultWaitableIsSerialized" configurationId="JUnit" />
+    <history-entry file="WaitableTest_testThatServiceExceptionWithCauseAndMessageSerialized - 2018.10.19 at 12h 21m 51s.xml">
+      <configuration name="WaitableTest.testThatServiceExceptionWithCauseAndMessageSerialized" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WaitableTest_testThatDefaultWaitableIsSerialized - 2018.10.19 at 11h 53m 46s.xml">
-      <configuration name="WaitableTest.testThatDefaultWaitableIsSerialized" configurationId="JUnit" />
+    <history-entry file="WaitableTest_testThatServiceExceptionWithCauseAndMessageSerialized - 2018.10.19 at 12h 26m 45s.xml">
+      <configuration name="WaitableTest.testThatServiceExceptionWithCauseAndMessageSerialized" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WaitableTest_testThatDefaultWaitableIsSerialized - 2018.10.19 at 11h 53m 55s.xml">
-      <configuration name="WaitableTest.testThatDefaultWaitableIsSerialized" configurationId="JUnit" />
+    <history-entry file="WaitableTest_testThatServiceExceptionWithCauseAndMessageSerialized - 2018.10.19 at 12h 27m 22s.xml">
+      <configuration name="WaitableTest.testThatServiceExceptionWithCauseAndMessageSerialized" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WaitableTest_testThatDefaultWaitableIsSerialized - 2018.10.19 at 11h 54m 05s.xml">
-      <configuration name="WaitableTest.testThatDefaultWaitableIsSerialized" configurationId="JUnit" />
+    <history-entry file="WaitableTest_testThatServiceExceptionWithCauseAndMessageSerialized - 2018.10.19 at 12h 49m 02s.xml">
+      <configuration name="WaitableTest.testThatServiceExceptionWithCauseAndMessageSerialized" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WaitableTest_testThatDefaultWaitableIsSerialized - 2018.10.19 at 11h 54m 10s.xml">
-      <configuration name="WaitableTest.testThatDefaultWaitableIsSerialized" configurationId="JUnit" />
+    <history-entry file="com_tmobile_qvxp_test_in_custompdx3 - 2018.10.19 at 12h 50m 07s.xml">
+      <configuration name="com.tmobile.qvxp.test in custompdx3" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WaitableTest_testThatDefaultWaitableIsSerialized - 2018.10.19 at 11h 55m 23s.xml">
-      <configuration name="WaitableTest.testThatDefaultWaitableIsSerialized" configurationId="JUnit" />
+    <history-entry file="com_tmobile_qvxp_test_in_custompdx3 - 2018.10.19 at 12h 52m 15s.xml">
+      <configuration name="com.tmobile.qvxp.test in custompdx3" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WaitableTest_testThatDefaultWaitableIsSerialized - 2018.10.19 at 11h 56m 09s.xml">
-      <configuration name="WaitableTest.testThatDefaultWaitableIsSerialized" configurationId="JUnit" />
+    <history-entry file="com_tmobile_qvxp_test_in_custompdx3 - 2018.10.19 at 12h 59m 05s.xml">
+      <configuration name="com.tmobile.qvxp.test in custompdx3" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WaitableTest_testThatDefaultWaitableIsSerialized - 2018.10.19 at 12h 02m 25s.xml">
-      <configuration name="WaitableTest.testThatDefaultWaitableIsSerialized" configurationId="JUnit" />
+    <history-entry file="com_tmobile_qvxp_test_in_custompdx3 - 2018.10.19 at 13h 00m 50s.xml">
+      <configuration name="com.tmobile.qvxp.test in custompdx3" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WaitableTest_testThatDefaultWaitableIsSerialized - 2018.10.19 at 12h 05m 19s.xml">
-      <configuration name="WaitableTest.testThatDefaultWaitableIsSerialized" configurationId="JUnit" />
+    <history-entry file="com_tmobile_qvxp_test_in_custompdx3 - 2018.10.19 at 13h 01m 05s.xml">
+      <configuration name="com.tmobile.qvxp.test in custompdx3" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11464000" />
+    <option name="totallyTimeSpent" value="14363000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1920" height="1178" extended-state="6" />
@@ -592,7 +533,7 @@
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20766774" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20766774" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="FindBugs-IDEA" />
       <window_info anchor="bottom" id="Messages" />
@@ -602,7 +543,7 @@
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.4088398" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4088398" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3314917" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -629,7 +570,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/internal/pdx/QVReflectionBasedAutoSerializer.java</url>
-          <line>124</line>
+          <line>123</line>
           <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
@@ -653,7 +594,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/internal/pdx/QVReflectionBasedAutoSerializer.java</url>
-          <line>74</line>
+          <line>73</line>
           <properties />
           <option name="timeStamp" value="9" />
         </line-breakpoint>
@@ -731,13 +672,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="40" column="21" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/io/pivotal/gemfire/geode-core/9.5.1/geode-core-9.5.1-sources.jar!/org/apache/geode/internal/logging/log4j/FastLogger.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
@@ -780,13 +714,6 @@
             <element signature="e#5062#5063#0" expanded="true" />
             <element signature="e#5085#5086#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/jre/lib/rt.jar!/com/sun/xml/internal/messaging/saaj/soap/SOAPDocumentImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="29" column="69" selection-start-line="29" selection-start-column="69" selection-end-line="29" selection-end-column="69" />
         </state>
       </provider>
     </entry>
@@ -851,13 +778,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/jre/lib/rt.jar!/com/sun/xml/internal/messaging/saaj/soap/MessageFactoryImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/jre/lib/rt.jar!/com/sun/xml/internal/messaging/saaj/soap/MessageImpl.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-935">
@@ -868,35 +788,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/serializer/WaitableTest.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/jre/lib/rt.jar!/com/sun/xml/internal/messaging/saaj/soap/MessageFactoryImpl.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="145" column="9" lean-forward="true" selection-start-line="145" selection-start-column="9" selection-end-line="145" selection-end-column="9" />
+        <state relative-caret-position="56">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/jre/lib/rt.jar!/com/sun/xml/internal/messaging/saaj/soap/SOAPDocumentImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1007">
+          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip!/javax/xml/soap/SOAPHeader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1253">
+          <caret line="69" column="17" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="33" column="12" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/internal/pdx/QVReflectionBasedAutoSerializer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1458">
-          <caret line="25" column="32" lean-forward="true" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+        <state relative-caret-position="765">
+          <caret line="251" column="16" lean-forward="true" selection-start-line="251" selection-start-column="16" selection-end-line="251" selection-end-column="16" />
           <folding>
-            <element signature="e#2106#2107#0" expanded="true" />
-            <element signature="e#2165#2166#0" expanded="true" />
-            <element signature="e#1863#1895#0" />
+            <element signature="method#getFieldType#0;class#QVReflectionBasedAutoSerializer#0" />
+            <element signature="method#transformFieldValue#0;class#QVReflectionBasedAutoSerializer#0" />
+            <element signature="e#2088#2120#0" />
+            <element signature="method#writeTransform#0;class#QVReflectionBasedAutoSerializer#0" />
             <element signature="method#readTransform#0;class#QVReflectionBasedAutoSerializer#0" />
+            <element signature="method#readSoapPart#0;class#QVReflectionBasedAutoSerializer#0" />
             <element signature="method#readMimeHeaders#0;class#QVReflectionBasedAutoSerializer#0" />
             <element signature="method#readXMLGregorianCalendar#0;class#QVReflectionBasedAutoSerializer#0" />
             <element signature="method#readStackTraceElement#0;class#QVReflectionBasedAutoSerializer#0" />
             <element signature="method#isStackTraceElement#0;class#QVReflectionBasedAutoSerializer#0" />
             <element signature="method#isSoapPart#0;class#QVReflectionBasedAutoSerializer#0" />
             <element signature="method#isXMLGregorianCalendar#0;class#QVReflectionBasedAutoSerializer#0" />
+            <element signature="method#isSpecialField#0;class#QVReflectionBasedAutoSerializer#0" />
             <element signature="method#writeSoapPart#0;class#QVReflectionBasedAutoSerializer#0" />
-            <element signature="method#writeSoapDocument#0;class#QVReflectionBasedAutoSerializer#0" />
             <element signature="method#writeMimeHeaders#0;class#QVReflectionBasedAutoSerializer#0" />
             <element signature="method#writeXMLGregorianCalendar#0;class#QVReflectionBasedAutoSerializer#0" />
             <element signature="method#writeStackTraceElement#0;class#QVReflectionBasedAutoSerializer#0" />
             <element signature="method#getSoapMessageFromString#0;class#QVReflectionBasedAutoSerializer#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/serializer/WaitableTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-140">
+          <caret line="156" column="16" lean-forward="true" selection-start-line="156" selection-start-column="16" selection-end-line="156" selection-end-column="16" />
         </state>
       </provider>
     </entry>

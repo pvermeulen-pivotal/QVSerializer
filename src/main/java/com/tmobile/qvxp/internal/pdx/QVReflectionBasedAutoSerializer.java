@@ -1,6 +1,5 @@
 package com.tmobile.qvxp.internal.pdx;
 
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl;
 import org.apache.geode.cache.Declarable;
 import org.apache.geode.pdx.FieldType;
@@ -48,7 +47,7 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
       return FieldType.OBJECT;
     }
     if (isSoapDocument(f)) {
-      return FieldType.STRING;
+      return FieldType.STRING_ARRAY;
     }
     if (isSoapPart(f)) {
       return FieldType.STRING_ARRAY;
@@ -245,29 +244,12 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
     return object;
   }
 
-  private String writeSoapDocument(Object originalValue) {
-    String object = null;
+  private Object writeSoapDocument(Object originalValue) {
     if (originalValue != null) {
       SOAPDocumentImpl soapDocument = (SOAPDocumentImpl) originalValue;
-      try {
-        Document document = soapDocument.getDocument();
-        if (document != null) {
-          XmlMapper xmlMapper = new XmlMapper();
-          StringWriter sw = new StringWriter();
-          TransformerFactory tf = TransformerFactory.newInstance();
-          Transformer transformer = tf.newTransformer();
-          transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
-          transformer.setOutputProperty(OutputKeys.METHOD, "xml");
-          transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-          transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-          transformer.transform(new DOMSource(document), new StreamResult(sw));
-          object = sw.toString();
-        }
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
+      return writeSoapPart(soapDocument.getSOAPPart());
     }
-    return object;
+    return null;
   }
 
   private Object writeMimeHeaders(Object originalValue) {
