@@ -1,5 +1,7 @@
 package com.tmobile.qvxp.internal.pdx;
 
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl;
 import org.apache.geode.cache.Declarable;
 import org.apache.geode.pdx.FieldType;
 import org.apache.geode.pdx.PdxSerializer;
@@ -45,10 +47,17 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
     if (isMimeHeaders(f)) {
       return FieldType.OBJECT;
     }
+    if (isSoapDocument(f)) {
+      return FieldType.STRING;
+    }
     if (isSoapPart(f)) {
       return FieldType.STRING_ARRAY;
     }
     return super.getFieldType(f, clazz);
+  }
+
+  private boolean isSoapDocument(Field f) {
+    return f.getType().equals(SOAPDocumentImpl.class);
   }
 
   @Override
@@ -59,6 +68,12 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
   @SuppressWarnings("restriction")
   @Override
   public Object writeTransform(Field f, Class<?> clazz, Object originalValue) {
+    if (originalValue == null) {
+      return null;
+    }
+    if (isSoapDocument(f)) {
+      return writeSoapDocument(originalValue);
+    }
     if (isStackTraceElement(f)) {
       return writeStackTraceElement(originalValue);
     }
@@ -199,7 +214,7 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
   }
 
   private boolean isSpecialField(Field f) {
-    return isXMLGregorianCalendar(f) || isStackTraceElement(f) || isMimeHeaders(f) || isSoapPart(f) || isThrowable(f);
+    return isXMLGregorianCalendar(f) || isStackTraceElement(f) || isMimeHeaders(f) || isSoapDocument(f) || isSoapPart(f) || isThrowable(f);
   }
 
   private Object writeSoapPart(Object originalValue) {
@@ -208,9 +223,36 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
       object = new String[2];
       com.sun.xml.internal.messaging.saaj.soap.SOAPPartImpl sdi = (com.sun.xml.internal.messaging.saaj.soap.SOAPPartImpl) originalValue;
       try {
-        SOAPBody body = sdi.getEnvelope().getBody();
-        if (body != null) {
-          Document doc = body.extractContentAsDocument();
+        if (sdi.getSOAPPart() != null) {
+          SOAPBody body = sdi.getEnvelope().getBody();
+          if (body != null) {
+            Document doc = body.extractContentAsDocument();
+            StringWriter sw = new StringWriter();
+            TransformerFactory tf = TransformerFactory.newInstance();
+            Transformer transformer = tf.newTransformer();
+            transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
+            transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+            transformer.transform(new DOMSource(doc), new StreamResult(sw));
+            object[1] = sw.toString();
+          }
+        }
+      } catch (Exception ex) {
+        ex.printStackTrace();
+      }
+    }
+    return object;
+  }
+
+  private String writeSoapDocument(Object originalValue) {
+    String object = null;
+    if (originalValue != null) {
+      SOAPDocumentImpl soapDocument = (SOAPDocumentImpl) originalValue;
+      try {
+        Document document = soapDocument.getDocument();
+        if (document != null) {
+          XmlMapper xmlMapper = new XmlMapper();
           StringWriter sw = new StringWriter();
           TransformerFactory tf = TransformerFactory.newInstance();
           Transformer transformer = tf.newTransformer();
@@ -218,11 +260,11 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
           transformer.setOutputProperty(OutputKeys.METHOD, "xml");
           transformer.setOutputProperty(OutputKeys.INDENT, "yes");
           transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-          transformer.transform(new DOMSource(doc), new StreamResult(sw));
-          object[1] = sw.toString();
+          transformer.transform(new DOMSource(document), new StreamResult(sw));
+          object = sw.toString();
         }
-      } catch (Exception ex) {
-        ex.printStackTrace();
+      } catch (Exception e) {
+        e.printStackTrace();
       }
     }
     return object;
@@ -270,7 +312,8 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
     return stackTraceElement;
   }
 
-  private SOAPMessage getSoapMessageFromString(MimeHeaders hdrs, String xml) throws SOAPException, IOException {
+  private SOAPMessage getSoapMessageFromString(MimeHeaders hdrs, String xml) throws
+          SOAPException, IOException {
     MessageFactory factory = MessageFactory.newInstance();
     SOAPMessage message = factory.createMessage(hdrs,
             new ByteArrayInputStream(xml.getBytes(Charset.forName("UTF-8"))));

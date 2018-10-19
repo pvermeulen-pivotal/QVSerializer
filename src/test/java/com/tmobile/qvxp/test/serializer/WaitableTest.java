@@ -1,18 +1,21 @@
 package com.tmobile.qvxp.test.serializer;
 
+import com.sun.xml.internal.messaging.saaj.soap.MessageFactoryImpl;
+import com.sun.xml.internal.messaging.saaj.soap.MessageImpl;
+import com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl;
+import com.sun.xml.internal.messaging.saaj.soap.ver1_1.Message1_1Impl;
+import com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPPart1_1Impl;
 import com.tmobile.qvxp.model.groovy.ServiceException;
 import com.tmobile.qvxp.model.groovy.ServiceResponse;
 import com.tmobile.qvxp.model.groovy.ServiceStatusMessage;
 import com.tmobile.qvxp.model.java.Waitable;
 import com.tmobile.qvxp.model.java.WaitableException;
 import com.tmobile.qvxp.test.common.TestHarness;
+import com.tmobile.qvxp.test.domain.TestDomain;
 import org.junit.Assert;
 import org.junit.Test;
 
-import javax.xml.soap.MessageFactory;
-import javax.xml.soap.MimeHeaders;
-import javax.xml.soap.SOAPException;
-import javax.xml.soap.SOAPMessage;
+import javax.xml.soap.*;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,6 +30,18 @@ public class WaitableTest {
   @Test
   public void testThatDefaultWaitableIsSerialized() {
     waitable = getWaitable(new WaitableException());
+    Assert.assertNotNull(testHarness.clientRunner(waitable,null));
+  }
+
+  @Test
+  public void testNullCase() {
+    waitable = getWaitable(null);
+    Assert.assertNotNull(testHarness.clientRunner(waitable,null));
+  }
+
+  @Test
+  public void testThatNullWaitableIsSerialized() {
+    waitable = getWaitable(new WaitableException(null));
     Assert.assertNotNull(testHarness.clientRunner(waitable,null));
   }
 
@@ -57,6 +72,12 @@ public class WaitableTest {
   @Test
   public void testThatServiceExceptionCauseOnlySerialized() {
     waitable = getWaitable(getServiceExceptionCauseOnly());
+    Assert.assertNotNull(testHarness.clientRunner(waitable, null));
+  }
+
+  @Test
+  public void testThatServiceExceptionNullCauseOnlySerialized() {
+    waitable = getWaitable(new ServiceException(new Throwable()));
     Assert.assertNotNull(testHarness.clientRunner(waitable, null));
   }
 
@@ -114,8 +135,8 @@ public class WaitableTest {
 
   private  Waitable getWaitable(Throwable throwable) {
     Waitable waitable = new Waitable(Waitable.Status.FAILED);
-    SOAPMessage sm = makeSoapMsg();
-    waitable.dataItem = makeSoapMsg();
+    MessageImpl message = new Message1_1Impl(makeSoapMsg());
+    waitable.dataItem = new SOAPPart1_1Impl(message);
     waitable.taskException = throwable;
     return waitable;
   }
