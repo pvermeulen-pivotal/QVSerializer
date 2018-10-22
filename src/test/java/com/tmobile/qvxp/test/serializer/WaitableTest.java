@@ -1,10 +1,8 @@
 package com.tmobile.qvxp.test.serializer;
 
-import com.sun.xml.internal.messaging.saaj.soap.MessageImpl;
-import com.sun.xml.internal.messaging.saaj.soap.ver1_1.Message1_1Impl;
-import com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPPart1_1Impl;
 import com.tmobile.qvxp.model.groovy.ServiceException;
 import com.tmobile.qvxp.model.groovy.ServiceResponse;
+import com.tmobile.qvxp.model.groovy.ServiceResponseStatus;
 import com.tmobile.qvxp.model.groovy.ServiceStatusMessage;
 import com.tmobile.qvxp.model.java.Waitable;
 import com.tmobile.qvxp.model.java.WaitableException;
@@ -26,17 +24,21 @@ public class WaitableTest {
   private final TestHarness testHarness = new TestHarness();
   private Waitable waitable;
   private Throwable cause;
+  private TestDomain domain;
 
   @Test
   public void testThatDefaultWaitableIsSerialized() {
     waitable = getWaitable(new WaitableException());
-    Assert.assertNotNull(testHarness.clientRunner(waitable, null));
+    domain = testHarness.clientRunner(waitable, null);
+    Assert.assertNotNull(domain);
+    Assert.assertNotNull(domain.getWaitable());
+    Assert.assertNull(domain.getOrderReferenceData());
   }
 
   @Test
   public void testThatSoapFaultExceptionSerialized() {
     waitable = getWaitable(getServiceExceptionWithSoapFaultException());
-    TestDomain domain = testHarness.clientRunner(waitable, null);
+    domain = testHarness.clientRunner(waitable, null);
     ServiceException serviceException = (ServiceException) domain.getWaitable().taskException;
     SOAPFault fault = ((SOAPFaultException) serviceException.getCause()).getFault();
     Assert.assertNotNull(domain);
@@ -47,7 +49,9 @@ public class WaitableTest {
   @Test
   public void testNullCase() {
     waitable = getWaitable(null);
-    Assert.assertNotNull(testHarness.clientRunner(waitable, null));
+    domain = testHarness.clientRunner(waitable, null);
+    Assert.assertNotNull(domain);
+    Assert.assertNull(domain.getWaitable().taskException);
   }
 
   @Test
@@ -59,49 +63,83 @@ public class WaitableTest {
   @Test
   public void testThatDefaultServiceExceptionSerialized() {
     waitable = getWaitable(new ServiceException());
-    Assert.assertNotNull(testHarness.clientRunner(waitable, null));
+    domain = testHarness.clientRunner(waitable, null);
+    Assert.assertNotNull(domain);
+    Assert.assertNotNull(domain.getWaitable().taskException);
+    Assert.assertNull(domain.getWaitable().taskException.getMessage());
   }
 
   @Test
   public void testThatWaitableWithMessageSerialized() {
     waitable = getWaitable(getWaitableException());
-    Assert.assertNotNull(testHarness.clientRunner(waitable, null));
+    domain = testHarness.clientRunner(waitable, null);
+    Assert.assertNotNull(domain);
+    Assert.assertEquals("something happened", domain.getWaitable().taskException.getMessage());
+
   }
 
   @Test
   public void testThatServiceExceptionWithMessageSerialized() {
     waitable = getWaitable(getServiceException());
-    Assert.assertNotNull(testHarness.clientRunner(waitable, null));
+    domain = testHarness.clientRunner(waitable, null);
+    Assert.assertNotNull(domain);
+    Assert.assertEquals("Meta 1 The LISA VSE service can't return valid response, please check " +
+            "your parameter values", domain.getWaitable().taskException.getMessage());
   }
 
   @Test
   public void testThatServiceExceptionWithCauseAndMessageSerialized() {
     waitable = getWaitable(getServiceExceptionWithCause());
-    Assert.assertNotNull(testHarness.clientRunner(waitable, null));
+    domain = testHarness.clientRunner(waitable, null);
+    Assert.assertNotNull(domain);
+    Assert.assertEquals("Meta 1 The LISA VSE service can't return valid response, please check " +
+            "your parameter values", domain.getWaitable().taskException.getMessage());
+    Assert.assertEquals("test cause", domain.getWaitable().taskException.getCause().getMessage());
   }
 
   @Test
   public void testThatServiceExceptionCauseOnlySerialized() {
     waitable = getWaitable(getServiceExceptionCauseOnly());
-    Assert.assertNotNull(testHarness.clientRunner(waitable, null));
+    domain = testHarness.clientRunner(waitable, null);
+    Assert.assertNotNull(domain);
+    Assert.assertEquals("test cause", domain.getWaitable().taskException.getCause().getMessage());
   }
 
   @Test
   public void testThatServiceExceptionNullCauseOnlySerialized() {
     waitable = getWaitable(new ServiceException(new Throwable()));
-    Assert.assertNotNull(testHarness.clientRunner(waitable, null));
+    domain = testHarness.clientRunner(waitable, null);
+    Assert.assertNotNull(domain);
+    Assert.assertNull(domain.getWaitable().taskException.getCause().getMessage());
   }
 
   @Test
   public void testThatServiceExceptionWithStatusCodeSerialized() {
     waitable = getWaitable(getServiceExceptionWithStatusCode());
-    Assert.assertNotNull(testHarness.clientRunner(waitable, null));
+    domain = testHarness.clientRunner(waitable, null);
+    ServiceException serviceException = (ServiceException) domain.getWaitable().taskException;
+    Map<String, ServiceStatusMessage> serviceStatusMessageMap =
+            serviceException.getServiceStatusCodeMessageMap();
+    Assert.assertNotNull(domain);
+    Assert.assertEquals("test message", serviceException.getMessage());
+    Assert.assertEquals("root cause", serviceException.getCause().getMessage());
+    Assert.assertNotNull(serviceStatusMessageMap);
+    Assert.assertTrue(serviceStatusMessageMap.containsKey("testString"));
+
+    ServiceStatusMessage serviceStatusMessage = serviceStatusMessageMap.get("testString");
+    Assert.assertTrue(serviceStatusMessage.getI18nMessage());
+    Assert.assertEquals("message", serviceStatusMessage.getMessage());
   }
 
   @Test
   public void testThatServiceExceptionWithStatusAndResponseSerialized() {
     waitable = getWaitable(getServiceExceptionWithStatusCodeAndResponse());
-    Assert.assertNotNull(testHarness.clientRunner(waitable, null));
+    domain = testHarness.clientRunner(waitable, null);
+    ServiceException serviceException = (ServiceException) domain.getWaitable().taskException;
+    ServiceResponse serviceResponse = serviceException.getServiceResponse();
+    ServiceResponseStatus serviceResponseStatus = serviceResponse.getServiceStatus();
+    Assert.assertNotNull(domain);
+    Assert.assertNotNull(serviceResponse);
   }
 
   /*StackOverFlow Without Throwable*/
@@ -154,14 +192,15 @@ public class WaitableTest {
     } catch (SOAPException e) {
       e.printStackTrace();
     }
+
     return new ServiceException("test message", serviceStatusCodeMessageMap,
             new SOAPFaultException(soapFault), new ServiceResponse());
   }
 
   private Waitable getWaitable(Throwable throwable) {
     Waitable waitable = new Waitable(Waitable.Status.FAILED);
-    MessageImpl message = new Message1_1Impl(makeSoapMsg());
-    waitable.dataItem = new SOAPPart1_1Impl(message);
+  /*  MessageImpl message = new Message1_1Impl(makeSoapMsg());
+    waitable.dataItem = new SOAPPart1_1Impl(message);*/
     waitable.dataItem = makeSoapMsg();
     waitable.taskException = throwable;
     return waitable;
