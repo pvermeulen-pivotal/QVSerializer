@@ -9,13 +9,12 @@ import com.tmobile.qvxp.model.groovy.ServiceStatusMessage;
 import com.tmobile.qvxp.model.java.Waitable;
 import com.tmobile.qvxp.model.java.WaitableException;
 import com.tmobile.qvxp.test.common.TestHarness;
+import com.tmobile.qvxp.test.domain.TestDomain;
 import org.junit.Assert;
 import org.junit.Test;
 
-import javax.xml.soap.MessageFactory;
-import javax.xml.soap.MimeHeaders;
-import javax.xml.soap.SOAPException;
-import javax.xml.soap.SOAPMessage;
+import javax.xml.soap.*;
+import javax.xml.ws.soap.SOAPFaultException;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,41 +25,53 @@ public class WaitableTest {
 
   private final TestHarness testHarness = new TestHarness();
   private Waitable waitable;
+  private Throwable cause;
 
   @Test
   public void testThatDefaultWaitableIsSerialized() {
     waitable = getWaitable(new WaitableException());
-    Assert.assertNotNull(testHarness.clientRunner(waitable,null));
+    Assert.assertNotNull(testHarness.clientRunner(waitable, null));
+  }
+
+  @Test
+  public void testThatSoapFaultExceptionSerialized() {
+    waitable = getWaitable(getServiceExceptionWithSoapFaultException());
+    TestDomain domain = testHarness.clientRunner(waitable, null);
+    ServiceException serviceException = (ServiceException) domain.getWaitable().taskException;
+    SOAPFault fault = ((SOAPFaultException) serviceException.getCause()).getFault();
+    Assert.assertNotNull(domain);
+    Assert.assertEquals("Meta 1 The LISA VSE service can't return valid response, please check " + "your parameter values", fault.getFaultString());
+    Assert.assertEquals("S:Server", fault.getFaultCode());
   }
 
   @Test
   public void testNullCase() {
     waitable = getWaitable(null);
-    Assert.assertNotNull(testHarness.clientRunner(waitable,null));
+    Assert.assertNotNull(testHarness.clientRunner(waitable, null));
   }
 
   @Test
   public void testThatNullWaitableIsSerialized() {
     waitable = getWaitable(new WaitableException(null));
-    Assert.assertNotNull(testHarness.clientRunner(waitable,null));
+    Assert.assertNotNull(testHarness.clientRunner(waitable, null));
   }
 
   @Test
   public void testThatDefaultServiceExceptionSerialized() {
     waitable = getWaitable(new ServiceException());
-    Assert.assertNotNull(testHarness.clientRunner(waitable,null));
+    Assert.assertNotNull(testHarness.clientRunner(waitable, null));
   }
 
   @Test
   public void testThatWaitableWithMessageSerialized() {
     waitable = getWaitable(getWaitableException());
-    Assert.assertNotNull(testHarness.clientRunner(waitable,null));
+    Assert.assertNotNull(testHarness.clientRunner(waitable, null));
   }
 
   @Test
   public void testThatServiceExceptionWithMessageSerialized() {
     waitable = getWaitable(getServiceException());
-    Assert.assertNotNull(testHarness.clientRunner(waitable,null));
+    Assert.assertNotNull(testHarness.clientRunner(waitable, null));
   }
 
   @Test
@@ -94,29 +105,29 @@ public class WaitableTest {
   }
 
   /*StackOverFlow Without Throwable*/
-  private  WaitableException getWaitableException() {
+  private WaitableException getWaitableException() {
     return new WaitableException("something happened");
   }
 
   /*StackOverFlow Without Throwable*/
-  private  ServiceException getServiceException() {
+  private ServiceException getServiceException() {
     return new ServiceException("Meta 1 The LISA VSE service can't return valid" +
             " response, please check your parameter values");
   }
 
   /*passes without throwable*/
-  private  ServiceException getServiceExceptionWithCause() {
+  private ServiceException getServiceExceptionWithCause() {
     return new ServiceException("Meta 1 The LISA VSE service can't return valid" +
             " response, please check your parameter values", new Throwable("test cause"));
   }
 
   /*passes without throwable*/
-  private  ServiceException getServiceExceptionCauseOnly() {
+  private ServiceException getServiceExceptionCauseOnly() {
     return new ServiceException(new Throwable("test cause"));
   }
 
   /*passes without throwable*/
-  private  ServiceException getServiceExceptionWithStatusCode() {
+  private ServiceException getServiceExceptionWithStatusCode() {
     Map<String, ServiceStatusMessage> serviceStatusCodeMessageMap = new HashMap<>();
     ServiceStatusMessage serviceStatusMessage = new ServiceStatusMessage("message", true);
     serviceStatusCodeMessageMap.put("testString", serviceStatusMessage);
@@ -125,7 +136,7 @@ public class WaitableTest {
   }
 
   /*passes without throwable*/
-  private  ServiceException getServiceExceptionWithStatusCodeAndResponse() {
+  private ServiceException getServiceExceptionWithStatusCodeAndResponse() {
     Map<String, ServiceStatusMessage> serviceStatusCodeMessageMap = new HashMap<>();
     ServiceStatusMessage serviceStatusMessage = new ServiceStatusMessage("message", true);
     serviceStatusCodeMessageMap.put("testString", serviceStatusMessage);
@@ -133,16 +144,31 @@ public class WaitableTest {
             "cause"), new ServiceResponse());
   }
 
-  private  Waitable getWaitable(Throwable throwable) {
+  private ServiceException getServiceExceptionWithSoapFaultException() {
+    SOAPFault soapFault = null;
+    Map<String, ServiceStatusMessage> serviceStatusCodeMessageMap = new HashMap<>();
+    ServiceStatusMessage serviceStatusMessage = new ServiceStatusMessage("message", true);
+    serviceStatusCodeMessageMap.put("testString", serviceStatusMessage);
+    try {
+      soapFault = makeSoapMsg().getSOAPPart().getEnvelope().getBody().getFault();
+    } catch (SOAPException e) {
+      e.printStackTrace();
+    }
+    return new ServiceException("test message", serviceStatusCodeMessageMap,
+            new SOAPFaultException(soapFault), new ServiceResponse());
+  }
+
+  private Waitable getWaitable(Throwable throwable) {
     Waitable waitable = new Waitable(Waitable.Status.FAILED);
     MessageImpl message = new Message1_1Impl(makeSoapMsg());
     waitable.dataItem = new SOAPPart1_1Impl(message);
+    waitable.dataItem = makeSoapMsg();
     waitable.taskException = throwable;
     return waitable;
   }
 
-  private  SOAPMessage makeSoapMsg() {
-    InputStream is = new ByteArrayInputStream(s1.getBytes());
+  private SOAPMessage makeSoapMsg() {
+    InputStream is = new ByteArrayInputStream(s2.getBytes());
     try {
       MimeHeaders mHdrs = new MimeHeaders();
       mHdrs.addHeader("Content-Type", "text/xml");
@@ -194,6 +220,4 @@ public class WaitableTest {
           + "						valid response, please check your parameter values.</message>\r\n"
           + "					<ns2:stackTrace></ns2:stackTrace>\r\n" + "				</ns2:exception>\r\n"
           + "			</detail>\r\n" + "		</S:Fault>\r\n" + "	</S:Body>\r\n" + "</S:Envelope>";
-
-
 }

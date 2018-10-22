@@ -30,7 +30,7 @@ public class Waitable implements Serializable {
   long timeToRetry = 0; // millisecs
   long pollInterval = 0; // millisecs
   public Throwable taskException = new WaitableException("Test WaitableException");
-  public Object dataItem = new SOAPPart1_1Impl();
+  public Object dataItem ;
   boolean syncEnabled = false;
 
   /**

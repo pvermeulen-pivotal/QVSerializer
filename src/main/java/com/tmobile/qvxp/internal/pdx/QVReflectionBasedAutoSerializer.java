@@ -1,6 +1,8 @@
 package com.tmobile.qvxp.internal.pdx;
 
 import com.sun.xml.internal.messaging.saaj.soap.SOAPDocumentImpl;
+import com.sun.xml.internal.messaging.saaj.soap.SOAPPartImpl;
+import com.tmobile.qvxp.model.groovy.ServiceException;
 import org.apache.geode.cache.Declarable;
 import org.apache.geode.pdx.FieldType;
 import org.apache.geode.pdx.PdxSerializer;
@@ -18,6 +20,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.ws.soap.SOAPFaultException;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.StringWriter;
@@ -52,11 +55,10 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
     if (isSoapPart(f)) {
       return FieldType.STRING_ARRAY;
     }
+    if (isSoapFault(f)) {
+      return FieldType.STRING;
+    }
     return super.getFieldType(f, clazz);
-  }
-
-  private boolean isSoapDocument(Field f) {
-    return f.getType().equals(SOAPDocumentImpl.class);
   }
 
   @Override
@@ -86,6 +88,9 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
       return writeSoapPart(originalValue);
     }
     if (isThrowable(f)) {
+      if (originalValue.getClass().equals(SOAPFaultException.class)) {
+        return writeSoapFault(originalValue);
+      }
       Throwable t = (Throwable) originalValue;
       if (t.getCause() == null) {
         t.initCause(new Throwable());
@@ -97,7 +102,6 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
               " " + f.getType());
     }
     return super.writeTransform(f, clazz, originalValue);
-
   }
 
   @Override
@@ -110,6 +114,13 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
     }
     if (isMimeHeaders(f)) {
       return readMimeHeaders(serializedValue);
+    }
+    if (isThrowable(f)) {
+      if (isSoapFault(f) || serializedValue.toString().contains("<S:Fault")) {
+        return readSoapFault(serializedValue);
+      }
+    } else {
+      return super.readTransform(f, clazz, serializedValue);
     }
     if (isSoapPart(f)) {
       return readSoapPart(serializedValue);
@@ -137,6 +148,28 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
       }
     }
     return soapMsg;
+  }
+
+  private Object readSoapFault(Object serializedValue) {
+    SOAPMessage soapMsg;
+    SOAPFault soapFault = null;
+    SOAPFaultException soapFaultException = null;
+    if (serializedValue != null) {
+      String value = (String) serializedValue;
+      if (value != null) {
+        try {
+          soapMsg = getSoapMessageFromString(null, value);
+          soapFault = soapMsg.getSOAPPart().getEnvelope().getBody().getFault();
+          soapFaultException = new SOAPFaultException(soapFault);
+        } catch (Exception ex) {
+          if (log.isDebugEnabled()) {
+            log.debug("QVReflectionBasedSerializer read transformation for SoapFault exception" + ex);
+          }
+          ex.printStackTrace();
+        }
+      }
+    }
+    return soapFaultException;
   }
 
   private Object readMimeHeaders(Object serializedValue) {
@@ -196,6 +229,14 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
     return f.getType().equals(StackTraceElement.class);
   }
 
+  private boolean isSoapFault(Field f) {
+    return f.getType().equals(SOAPFaultException.class);
+  }
+
+  private boolean isSoapDocument(Field f) {
+    return f.getType().equals(SOAPDocumentImpl.class);
+  }
+
   private boolean isThrowable(Field f) {
     return f.getType().equals(Throwable.class);
   }
@@ -213,7 +254,7 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
   }
 
   private boolean isSpecialField(Field f) {
-    return isXMLGregorianCalendar(f) || isStackTraceElement(f) || isMimeHeaders(f) || isSoapDocument(f) || isSoapPart(f) || isThrowable(f);
+    return isXMLGregorianCalendar(f) || isStackTraceElement(f) || isMimeHeaders(f) || isSoapDocument(f) || isSoapFault(f) || isSoapPart(f) || isThrowable(f);
   }
 
   private Object writeSoapPart(Object originalValue) {
@@ -245,11 +286,61 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
   }
 
   private Object writeSoapDocument(Object originalValue) {
+    String[] object = null;
     if (originalValue != null) {
       SOAPDocumentImpl soapDocument = (SOAPDocumentImpl) originalValue;
-      return writeSoapPart(soapDocument.getSOAPPart());
+      try {
+        SOAPPartImpl soapPart = soapDocument.getSOAPPart();
+        if (soapPart != null) {
+          SOAPBody body = soapPart.getEnvelope().getBody();
+          if (body != null) {
+            Document doc = body.extractContentAsDocument();
+            StringWriter sw = new StringWriter();
+            TransformerFactory tf = TransformerFactory.newInstance();
+            Transformer transformer = tf.newTransformer();
+            transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
+            transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+            transformer.transform(new DOMSource(doc),
+                    new StreamResult(sw));
+            System.out.println(sw.toString());
+            object[1] = sw.toString();
+          }
+        }
+      } catch (Exception ex) {
+        ex.printStackTrace();
+      }
     }
-    return null;
+    return object;
+  }
+
+  private Object writeSoapFault(Object originalValue) {
+    System.out.println("USING SOAPFAULT FOR SERIALIZATION");
+    String document = null;
+    if (originalValue != null) {
+      SOAPFault soapFault = ((SOAPFaultException) originalValue).getFault();
+      try {
+        Document doc = soapFault.getOwnerDocument();
+        StringWriter sw = new StringWriter();
+        TransformerFactory tf = TransformerFactory.newInstance();
+        Transformer transformer = tf.newTransformer();
+        transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
+        transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+        transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+        transformer.transform(new DOMSource(doc),
+                new StreamResult(sw));
+        document = sw.toString();
+        System.out.println(document);
+      } catch (Exception e) {
+        if (log.isDebugEnabled()) {
+          log.debug("QVReflectionBasedSerializer read transformation for SoapFault exception" + e);
+        }
+        e.printStackTrace();
+      }
+    }
+    return document;
   }
 
   private Object writeMimeHeaders(Object originalValue) {
@@ -301,4 +392,5 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
             new ByteArrayInputStream(xml.getBytes(Charset.forName("UTF-8"))));
     return message;
   }
+
 }
