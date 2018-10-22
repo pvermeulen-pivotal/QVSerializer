@@ -154,11 +154,8 @@ public class TestDomain implements Serializable {
 		} else if (!sessionSte.equals(other.sessionSte))
 			return false;
 		if (waitable == null) {
-			if (other.waitable != null)
-				return false;
-		} else if (!waitable.equals(other.waitable))
-			return false;
-		return true;
+			return other.waitable == null;
+		} else return waitable.equals(other.waitable);
 	}
 
 	@Override

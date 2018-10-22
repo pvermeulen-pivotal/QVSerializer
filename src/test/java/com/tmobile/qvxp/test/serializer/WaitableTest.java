@@ -2,7 +2,6 @@ package com.tmobile.qvxp.test.serializer;
 
 import com.tmobile.qvxp.model.groovy.ServiceException;
 import com.tmobile.qvxp.model.groovy.ServiceResponse;
-import com.tmobile.qvxp.model.groovy.ServiceResponseStatus;
 import com.tmobile.qvxp.model.groovy.ServiceStatusMessage;
 import com.tmobile.qvxp.model.java.Waitable;
 import com.tmobile.qvxp.model.java.WaitableException;
@@ -206,15 +205,22 @@ public class WaitableTest {
   }
 
   private SOAPMessage makeSoapMsg() {
+    String s2 = "<S:Envelope\r\n" + "	xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n"
+            + "	<S:Body>\r\n" + "		<S:Fault xmlns:ns3=\"http://www.w3.org/2003/05/soap-envelope\">\r\n"
+            + "			<faultcode>S:Server</faultcode>\r\n"
+            + "			<faultstring>Meta 1 The LISA VSE service can't return valid response, please check your parameter values</faultstring>\r\n"
+            + "			<detail>\r\n" + "				<ns2:exception class=\"java.lang.Exception\"\r\n"
+            + "					xmlns:ns2=\"http://jax-ws.dev.java.net/\">\r\n"
+            + "					<message>(getBasicAccountDetails)The LISA VSE service can't return\r\n"
+            + "						valid response, please check your parameter values.</message>\r\n"
+            + "					<ns2:stackTrace></ns2:stackTrace>\r\n" + "				</ns2:exception>\r\n"
+            + "			</detail>\r\n" + "		</S:Fault>\r\n" + "	</S:Body>\r\n" + "</S:Envelope>";
     InputStream is = new ByteArrayInputStream(s2.getBytes());
     try {
       MimeHeaders mHdrs = new MimeHeaders();
       mHdrs.addHeader("Content-Type", "text/xml");
       return MessageFactory.newInstance().createMessage(mHdrs, is);
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (SOAPException e) {
+    } catch (IOException | SOAPException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
@@ -248,14 +254,4 @@ public class WaitableTest {
           + "			<includeUpfrontPaymentEligibility>true\r\n" + "			</includeUpfrontPaymentEligibility>\r\n"
           + "		</getBasicAccountDetailsRequest>\r\n" + "	</soap:Body>\r\n" + "</soap:Envelope>\r\n";
 
-  private static String s2 = "<S:Envelope\r\n" + "	xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n"
-          + "	<S:Body>\r\n" + "		<S:Fault xmlns:ns3=\"http://www.w3.org/2003/05/soap-envelope\">\r\n"
-          + "			<faultcode>S:Server</faultcode>\r\n"
-          + "			<faultstring>Meta 1 The LISA VSE service can't return valid response, please check your parameter values</faultstring>\r\n"
-          + "			<detail>\r\n" + "				<ns2:exception class=\"java.lang.Exception\"\r\n"
-          + "					xmlns:ns2=\"http://jax-ws.dev.java.net/\">\r\n"
-          + "					<message>(getBasicAccountDetails)The LISA VSE service can't return\r\n"
-          + "						valid response, please check your parameter values.</message>\r\n"
-          + "					<ns2:stackTrace></ns2:stackTrace>\r\n" + "				</ns2:exception>\r\n"
-          + "			</detail>\r\n" + "		</S:Fault>\r\n" + "	</S:Body>\r\n" + "</S:Envelope>";
 }

@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 
-import com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPPart1_1Impl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -170,17 +170,15 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
     SOAPFaultException soapFaultException = null;
     if (serializedValue != null) {
       String value = (String) serializedValue;
-      if (value != null) {
-        try {
-          soapMsg = getSoapMessageFromString(null, value);
-          soapFault = soapMsg.getSOAPPart().getEnvelope().getBody().getFault();
-          soapFaultException = new SOAPFaultException(soapFault);
-        } catch (Exception ex) {
-          if (log.isDebugEnabled()) {
-            log.debug("QVReflectionBasedSerializer read transformation for SoapFault exception" + ex);
-          }
-          ex.printStackTrace();
+      try {
+        soapMsg = getSoapMessageFromString(null, value);
+        soapFault = soapMsg.getSOAPPart().getEnvelope().getBody().getFault();
+        soapFaultException = new SOAPFaultException(soapFault);
+      } catch (Exception ex) {
+        if (log.isDebugEnabled()) {
+          log.debug("QVReflectionBasedSerializer read transformation for SoapFault exception" + ex);
         }
+        ex.printStackTrace();
       }
     }
     return soapFaultException;
@@ -293,7 +291,7 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
     return object;
   }
 
-
+  /*Does not seem to be able to  get envelope for SOAPDocument*/
   private Object writeSoapDocument(Object originalValue) {
     String[] object = null;
     if (originalValue != null) {
@@ -397,9 +395,8 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
   private SOAPMessage getSoapMessageFromString(MimeHeaders hdrs, String xml) throws
           SOAPException, IOException {
     MessageFactory factory = MessageFactory.newInstance();
-    SOAPMessage message = factory.createMessage(hdrs,
+    return factory.createMessage(hdrs,
             new ByteArrayInputStream(xml.getBytes(Charset.forName("UTF-8"))));
-    return message;
   }
 
   private void handleSOAPPartTransform(String[] object, SOAPPartImpl soapPart) {
