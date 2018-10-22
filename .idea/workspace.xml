@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9eb76ade-88d9-4136-9c8a-4a77c94d8c5b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/internal/pdx/QVReflectionBasedAutoSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tmobile/qvxp/internal/pdx/QVReflectionBasedAutoSerializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/serializer/OrderReferenceDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/serializer/OrderReferenceDataTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/serializer/WaitableTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/serializer/WaitableTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -41,13 +38,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="42" />
-          <entry key="java" value="5855" />
+          <entry key="java" value="6018" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="5855" />
+          <entry key="JAVA" value="6018" />
           <entry key="PLAIN_TEXT" value="42" />
           <entry key="XML" value="1" />
         </counts>
@@ -59,8 +56,18 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/serializer/WaitableTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2355">
-              <caret line="174" lean-forward="true" selection-start-line="174" selection-end-line="174" />
+            <state relative-caret-position="217">
+              <caret line="53" column="56" selection-start-line="53" selection-start-column="56" selection-end-line="53" selection-end-column="56" />
+              <folding>
+                <element signature="method#getWaitableException#0;class#WaitableTest#0" />
+                <element signature="method#getServiceException#0;class#WaitableTest#0" />
+                <element signature="method#getServiceExceptionWithCause#0;class#WaitableTest#0" />
+                <element signature="method#getServiceExceptionCauseOnly#0;class#WaitableTest#0" />
+                <element signature="method#getServiceExceptionWithStatusCode#0;class#WaitableTest#0" />
+                <element signature="method#getServiceExceptionWithStatusCodeAndResponse#0;class#WaitableTest#0" />
+                <element signature="method#getWaitable#0;class#WaitableTest#0" />
+                <element signature="method#makeSoapMsg#0;class#WaitableTest#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -338,7 +345,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540229233522" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540229508448" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -355,7 +362,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.WaitableTest">
+  <component name="RunManager" selected="JUnit.WaitableTest.testThatSoapFaultExceptionNullSerialized">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -378,23 +385,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.tmobile.qvxp.test.serializer" />
       <option name="MAIN_CLASS_NAME" value="com.tmobile.qvxp.test.serializer.WaitableTest" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WaitableTest.testThatServiceExceptionCauseOnlySerialized" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="custompdx3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.tmobile.qvxp.test.serializer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.tmobile.qvxp.test.serializer" />
-      <option name="MAIN_CLASS_NAME" value="com.tmobile.qvxp.test.serializer.WaitableTest" />
-      <option name="METHOD_NAME" value="testThatServiceExceptionCauseOnlySerialized" />
-      <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -451,6 +441,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="WaitableTest.testThatSoapFaultExceptionNullSerialized" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="custompdx3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tmobile.qvxp.test.serializer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tmobile.qvxp.test.serializer" />
+      <option name="MAIN_CLASS_NAME" value="com.tmobile.qvxp.test.serializer.WaitableTest" />
+      <option name="METHOD_NAME" value="testThatSoapFaultExceptionNullSerialized" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
@@ -475,19 +482,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.WaitableTest.testThatServiceExceptionCauseOnlySerialized" />
       <item itemvalue="JUnit.WaitableTest.testThatServiceExceptionNullCauseOnlySerialized" />
       <item itemvalue="JUnit.WaitableTest.testThatServiceExceptionWithStatusCodeSerialized" />
       <item itemvalue="JUnit.WaitableTest.testThatServiceExceptionWithStatusAndResponseSerialized" />
       <item itemvalue="JUnit.WaitableTest" />
+      <item itemvalue="JUnit.WaitableTest.testThatSoapFaultExceptionNullSerialized" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.WaitableTest.testThatSoapFaultExceptionNullSerialized" />
         <item itemvalue="JUnit.WaitableTest" />
         <item itemvalue="JUnit.WaitableTest.testThatServiceExceptionWithStatusAndResponseSerialized" />
         <item itemvalue="JUnit.WaitableTest.testThatServiceExceptionWithStatusCodeSerialized" />
         <item itemvalue="JUnit.WaitableTest.testThatServiceExceptionNullCauseOnlySerialized" />
-        <item itemvalue="JUnit.WaitableTest.testThatServiceExceptionCauseOnlySerialized" />
       </list>
     </recent_temporary>
   </component>
@@ -501,14 +508,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1539895478809</updated>
-      <workItem from="1539895480298" duration="41522000" />
+      <workItem from="1539895480298" duration="41796000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="WaitableTest_testThatServiceExceptionWithCauseAndMessageSerialized - 2018.10.22 at 11h 06m 20s.xml">
-      <configuration name="WaitableTest.testThatServiceExceptionWithCauseAndMessageSerialized" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="WaitableTest_testThatServiceExceptionCauseOnlySerialized - 2018.10.22 at 11h 08m 25s.xml">
       <configuration name="WaitableTest.testThatServiceExceptionCauseOnlySerialized" configurationId="JUnit" />
     </history-entry>
@@ -536,9 +540,12 @@
     <history-entry file="WaitableTest_testThatServiceExceptionWithStatusAndResponseSerialized - 2018.10.22 at 11h 22m 44s.xml">
       <configuration name="WaitableTest.testThatServiceExceptionWithStatusAndResponseSerialized" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="WaitableTest - 2018.10.22 at 11h 27m 18s.xml">
+      <configuration name="WaitableTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41522000" />
+    <option name="totallyTimeSpent" value="41796000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1920" height="1178" extended-state="6" />
@@ -549,7 +556,7 @@
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20766774" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20766774" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="FindBugs-IDEA" />
       <window_info anchor="bottom" id="Messages" weight="0.3296501" />
@@ -559,7 +566,7 @@
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.40423572" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.40423572" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4208103" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1014,8 +1021,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/tmobile/qvxp/test/serializer/WaitableTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2355">
-          <caret line="174" lean-forward="true" selection-start-line="174" selection-end-line="174" />
+        <state relative-caret-position="217">
+          <caret line="53" column="56" selection-start-line="53" selection-start-column="56" selection-end-line="53" selection-end-column="56" />
+          <folding>
+            <element signature="method#getWaitableException#0;class#WaitableTest#0" />
+            <element signature="method#getServiceException#0;class#WaitableTest#0" />
+            <element signature="method#getServiceExceptionWithCause#0;class#WaitableTest#0" />
+            <element signature="method#getServiceExceptionCauseOnly#0;class#WaitableTest#0" />
+            <element signature="method#getServiceExceptionWithStatusCode#0;class#WaitableTest#0" />
+            <element signature="method#getServiceExceptionWithStatusCodeAndResponse#0;class#WaitableTest#0" />
+            <element signature="method#getWaitable#0;class#WaitableTest#0" />
+            <element signature="method#makeSoapMsg#0;class#WaitableTest#0" />
+          </folding>
         </state>
       </provider>
     </entry>

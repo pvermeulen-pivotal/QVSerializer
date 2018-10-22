@@ -423,5 +423,4 @@ public class QVReflectionBasedAutoSerializer extends ReflectionBasedAutoSerializ
       ex.printStackTrace();
     }
   }
-
 }

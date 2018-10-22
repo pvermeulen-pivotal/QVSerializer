@@ -47,7 +47,7 @@ public class WaitableTest {
   }
 
   @Test
-  public void testNullCase() {
+  public void testThatNullTaskExceptionSerialized() {
     waitable = getWaitable(null);
     domain = testHarness.clientRunner(waitable, null);
     Assert.assertNotNull(domain);
@@ -137,7 +137,6 @@ public class WaitableTest {
     domain = testHarness.clientRunner(waitable, null);
     ServiceException serviceException = (ServiceException) domain.getWaitable().taskException;
     ServiceResponse serviceResponse = serviceException.getServiceResponse();
-    ServiceResponseStatus serviceResponseStatus = serviceResponse.getServiceStatus();
     Assert.assertNotNull(domain);
     Assert.assertNotNull(serviceResponse);
   }
